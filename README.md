@@ -13,7 +13,7 @@ To bridge the gap between hardware and software, this project includes a **Custo
 ## ✨ Key Features
 * **5-Stage Pipeline Architecture:** Instruction Fetch (IF), Decode (ID), Execute (EX), Memory (MEM), and Write-Back (WB).
 * **Advanced Hazard Resolution:** * **Forwarding Unit:** Resolves EX and MEM data hazards, including double-hazard prioritization and Zero-register bypass.
-  * **Hazard Detection Unit:** Implements Load-Use stalling and Branch flushing (predict-not-taken).
+* **Hazard Detection Unit:** Implements Load-Use stalling and Branch flushing (predict-not-taken).
 * **Memory-Mapped I/O:** Physical peripherals (e.g., LEDs, Switches) are directly mapped to specific memory addresses (e.g., `0xFFFF`), demonstrating bare-metal embedded concepts.
 * **Custom Software Toolchain:** A dedicated Python-based assembler (`assembler.py`) with support for loop unrolling, automated binary translation, and inline comments.
 * **Robust Verification:** Fully automated testbenches featuring watchdog timers and golden-reference cross-checking. Verified under extreme stress-test algorithms (e.g., Fibonacci generation over 50+ continuous loops).
@@ -62,7 +62,7 @@ The verification environment avoids manual waveform inspection by using **Direct
 
 * **Unit Tests:** Isolated testing for `alu.v`, `register_file.v` (checking Zero-register protection), and `forwarding_unit.v`.
 * **Integration Test** (`cpu_tb.v`): Runs a stress-test program (Fibonacci sequence over 50 iterations)
-* * Cross-checks internal register states and memory outputs against a Golden Reference upon CPU Halt.
+  * Cross-checks internal register states and memory outputs against a Golden Reference upon CPU Halt.
   * Prints `[PASSED]` or `[FAILED]` directly to the TCL Console.
     
 **How to Run (Xilinx Vivado)**
