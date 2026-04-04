@@ -4,12 +4,12 @@
 
 module datapath(
     input clk, 
-    input ce,              // [M?I] Clock Enable
+    input ce,            
     input rst,
-    output halt,           // [S?A L?I] Ph?i l‡ OUTPUT
+    output halt,          
     output [15:0] current_pc,       
     
-    // C·c Port giao ti?p I/O Memory-Mapped
+    // I/O Memory-Mapped
     output [15:0] mem_addr_out,
     output [15:0] mem_writedata_out,
     output mem_write_en_out,
@@ -17,7 +17,7 @@ module datapath(
 );
 
     // ==========================================
-    // KHAI B¡O D¬Y (WIRES) 
+    // KHAI B√ÅO D√ÇY (WIRES) 
     // ==========================================
     wire [15:0] pc_next, pc_current, pc_plus_2;
     wire [15:0] instr_IF;
@@ -61,9 +61,6 @@ module datapath(
     wire [2:0]  write_reg_WB;
     wire [15:0] final_write_data_WB;
 
-    // ==========================================
-    // MAP GIAO TI?P RA NGO¿I CPU_TOP
-    // ==========================================
     assign halt = Ctrl_Halt;
     assign mem_addr_out = alu_result_MEM;
     assign mem_writedata_out = write_data_MEM;
@@ -87,7 +84,7 @@ module datapath(
     always @(posedge clk or posedge rst) begin
         if (rst) 
             pc <= 0;
-        else if (ce) begin // [QUAN TR?NG] Clock Enable
+        else if (ce) begin // Clock Enable
             if (final_pc_write) pc <= pc_next;
         end
     end
@@ -104,7 +101,7 @@ module datapath(
 
     if_id_reg IF_ID (
         .clk(clk), 
-        .ce(ce),                 // <--- TH M CE V¿O PIPELINE
+        .ce(ce),          
         .reset(rst),
         .en(final_if_id_write),
         .flush(IF_ID_Flush),
@@ -126,12 +123,12 @@ module datapath(
         .Branch(Ctrl_Branch), .Jump(Ctrl_Jump), .JumpReg(Ctrl_JumpReg), .ALUOp(Ctrl_ALUOp),
         .HILO_WriteEn(Ctrl_HILO_Write), .MTSR_WriteEn(Ctrl_MTSR_Write), 
         .MFSR_ReadEn(Ctrl_MFSR_Read), .IsBGTZ(Ctrl_IsBGTZ),
-        .Halt(Ctrl_Halt)         // <--- ?√ N?I D¬Y HALT
+        .Halt(Ctrl_Halt)        
     );
 
     register_file reg_file (
         .clk(clk), 
-        .ce(ce),                 // <--- TH M CE ?? ??NG B? GHI
+        .ce(ce),        
         .rst(rst),
         .ReadAddr_rs(instr_ID[11:9]),
         .ReadAddr_rt(instr_ID[8:6]),
@@ -171,7 +168,7 @@ module datapath(
 
     id_ex_reg ID_EX (
         .clk(clk), 
-        .ce(ce),                 // <--- TH M CE V¿O PIPELINE
+        .ce(ce),         
         .reset(rst),
         .flush(ID_Flush_Final),
         .RegWrite_in(Ctrl_RegWrite), .MemtoReg_in(Ctrl_MemtoReg),
@@ -227,7 +224,7 @@ module datapath(
                            
     assign alu_in_B_final = (alu_src_EX) ? imm_ext_EX : alu_in_B_temp;
 
-    // [S?A L?I] Logic c? GTZ m?i (BGTZ nh?y khi > 0 t?c l‡ KhÙng ‚m v‡ KhÙng b?ng 0)
+    // [S?A L?I] Logic c? GTZ m?i (BGTZ nh?y khi > 0 t?c l√† Kh√¥ng √¢m v√† Kh√¥ng b?ng 0)
     assign gtz_flag_EX = (!negative_flag_EX) && (!zero_flag_EX);
 
     alu alu_inst (
@@ -235,9 +232,9 @@ module datapath(
         .B(alu_in_B_final),
         .ALUOp(alu_op_EX),
         .Result(alu_result_EX),
-        .HILO_Out({hi_out_EX, lo_out_EX}), // [S?A L?I] Kh?p port ALU m?i
+        .HILO_Out({hi_out_EX, lo_out_EX}),  
         .Zero(zero_flag_EX), 
-        .Negative(negative_flag_EX),       // [S?A L?I] Kh?p port ALU m?i
+        .Negative(negative_flag_EX),    
         .Overflow()  
     );
 
@@ -252,7 +249,7 @@ module datapath(
 
     ex_mem_reg EX_MEM (
         .clk(clk), 
-        .ce(ce),                 // <--- TH M CE V¿O PIPELINE
+        .ce(ce),           
         .reset(rst),
         .RegWrite_in(reg_write_EX), .MemtoReg_in(mem_to_reg_EX),
         .MemRead_in(mem_read_EX), .MemWrite_in(mem_write_EX),
@@ -276,7 +273,7 @@ module datapath(
     // ==========================================
     data_memory dmem (
         .clk(clk),
-        .ce(ce),                 // <--- TH M CE ?? ??NG B? GHI RAM
+        .ce(ce),            
         .Address(alu_result_MEM),
         .DataIn(write_data_MEM),
         .MemRead(mem_read_MEM),
@@ -286,7 +283,7 @@ module datapath(
 
     mem_wb_reg MEM_WB (
         .clk(clk), 
-        .ce(ce),                 // <--- TH M CE V¿O PIPELINE
+        .ce(ce),           
         .reset(rst),
         .RegWrite_in(reg_write_MEM), .MemtoReg_in(mem_to_reg_MEM),
         .HILO_WriteEn_in(hilo_write_MEM), .MTSR_WriteEn_in(mtsr_write_MEM),
