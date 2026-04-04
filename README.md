@@ -33,10 +33,10 @@ This core implements a custom 16-bit instruction set inspired by the MIPS archit
 
 | Type   | Format (16 bits)                           | Supported Instructions |
 | :---   | :---                                       | :--- |
-| **R** | `Opcode(4) | rs(3) | rt(3) | rd(3) | funct(3)`| `add`, `sub`, `and`, `or`, `slt`, `shl`, `shr`, `jr` |
-| **I** | `Opcode(4) | rs(3) | rt(3) | imm(6)`         | `addi`, `slti`, `lh`, `sh`, `bneq`, `bgtz` |
-| **J** | `Opcode(4) | address(12)`                    | `j` (Jump) |
-| **Sp** | `Opcode(4) | 000000000000`                   | `hlt` (Halt execution) |
+| **R** | `Opcode(4) \| rs(3) \| rt(3) \| rd(3) \| funct(3)` | `add`, `sub`, `and`, `or`, `slt`, `shl`, `shr`, `jr` |
+| **I** | `Opcode(4) \| rs(3) \| rt(3) \| imm(6)`          | `addi`, `slti`, `lh`, `sh`, `bneq`, `bgtz` |
+| **J** | `Opcode(4) \| address(12)`                     | `j` (Jump) |
+| **Sp** | `Opcode(4) \| 000000000000`                | `hlt` (Halt execution) |
 
 ## 🛠️ Toolchain: Custom Python Assembler
 Writing machine code by hand is error-prone. This repository includes `assembler.py`, a custom compiler that translates Assembly into Verilog-ready Hex files.
@@ -64,7 +64,9 @@ The verification environment avoids manual waveform inspection by using **Direct
 * **Integration Test** (`cpu_tb.v`): Runs a stress-test program (Fibonacci sequence over 50 iterations)
   * Cross-checks internal register states and memory outputs against a Golden Reference upon CPU Halt.
   * Prints `[PASSED]` or `[FAILED]` directly to the TCL Console.
-    
+
+---
+
 **How to Run (Xilinx Vivado)**
 
 1. Clone this repository.
@@ -77,4 +79,6 @@ The verification environment avoids manual waveform inspection by using **Direct
 
 5. Run Behavioral Simulation.
 
-*"Building this CPU from logic gates to the assembler toolchain has profoundly deepened my understanding of Embedded Systems, Real-Time Processing, and Hardware-Software Co-design."*
+---
+
+*Building this CPU from logic gates to the assembler toolchain has profoundly deepened my understanding of Embedded Systems, Real-Time Processing, and Hardware-Software Co-design.*
