@@ -6,15 +6,15 @@ module control_unit(
     input [3:0] opcode,
     input [2:0] funct,
     
-    // --- Control Signals (Sẽ đi vào Pipeline Registers) ---
+    // --- Control Signals ---
     output reg RegWrite,
     output reg MemtoReg,    // 0=ALU, 1=Mem
     output reg MemRead,
     output reg MemWrite,
     output reg ALUSrc,      // 0=Reg, 1=Imm
     output reg RegDst,      // 0=$rt, 1=$rd
-    output reg Branch,      // 1=Lệnh Branch (BNEQ, BGTZ)
-    output reg Jump,        // 1=Lệnh Jump
+    output reg Branch,      // 1=Lá»‡nh Branch (BNEQ, BGTZ)
+    output reg Jump,        // 1=Lá»‡nh Jump
     output reg [4:0] ALUOp,
     output reg JumpReg,
     output reg HILO_WriteEn,
@@ -47,7 +47,6 @@ module control_unit(
     parameter OP_ADDR_CALC = 5'b10100; 
 
     always @(*) begin
-        // 1. Reset tất cả tín hiệu v�? 0
         RegWrite     = 0;
         MemtoReg     = 0;
         MemRead      = 0;
@@ -64,13 +63,13 @@ module control_unit(
         IsBGTZ       = 0;
         Halt = 0;
 
-        // 2. Main Decoding
+        // Main Decoding
         case (opcode)
             4'b0000: begin // ALU0 (R-Type)
                 RegWrite = 1;
-                RegDst   = 1; // Ghi vào $rd
+                RegDst   = 1; 
                 ALUSrc   = 0;
-                // ALUOp dựa vào funct
+ 
                 case(funct)
                     3'b000: ALUOp = OP_ADDU;
                     3'b001: ALUOp = OP_SUBU;
@@ -114,8 +113,8 @@ module control_unit(
             
             4'b0011: begin // ADDI
                 RegWrite = 1;
-                RegDst   = 0; // Ghi vào $rt
-                ALUSrc   = 1; // Dùng Imm
+                RegDst   = 0;  
+                ALUSrc   = 1;  
                 ALUOp    = OP_ADDU; 
             end
             
@@ -170,7 +169,6 @@ module control_unit(
             
             4'b1111: begin // HLT
                 Halt = 1;
-                // �p t?t c? c�c c? ghi v? 0 ?? an to�n tuy?t ??i
                 RegWrite = 0;
                 MemWrite = 0;
             end
