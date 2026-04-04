@@ -22,23 +22,20 @@ module alu (
     // =========================================================================
     // ALU OPERATIONS
     // =========================================================================
-    always @(*) begin
-        // Tr?ng thái m?c ??nh
+    always @(*) begin 
         Overflow = 0;
         HILO_Out = 32'b0;
         Result   = 16'b0;
 
         case(ALUOp)
-            5'b00001: begin // OP_ADD (C?ng có d?u)
-                Result = A + B;
-                // Thu?t toán phát hi?n tràn s?: Hai s? cùng d?u c?ng l?i ra s? trái d?u
+            5'b00001: begin // OP_ADD (C?ng cÃ³ d?u)
+                Result = A + B; 
                 if ((A[15] == B[15]) && (Result[15] != A[15])) Overflow = 1;
             end
-            5'b00010: Result = A + B; // OP_ADDU (Không xét tràn)
+            5'b00010: Result = A + B; // OP_ADDU 
             
-            5'b00011: begin // OP_SUB (Tr? có d?u)
-                Result = A - B;
-                // Thu?t toán tràn khi tr?: Hai s? trái d?u, k?t qu? trái d?u v?i s? b? tr?
+            5'b00011: begin // OP_SUB  
+                Result = A - B; 
                 if ((A[15] != B[15]) && (Result[15] != A[15])) Overflow = 1;
             end
             5'b00100: Result = A - B; // OP_SUBU
@@ -50,7 +47,7 @@ module alu (
             5'b01000: Result = A ^ B; // OP_XOR
             
             // Set on Less Than
-            5'b01001: Result = (A < B) ? 16'd1 : 16'd0; // OP_SLT (Có d?u)
+            5'b01001: Result = (A < B) ? 16'd1 : 16'd0; // OP_SLT  
             5'b01010: Result = ($unsigned(A) < $unsigned(B)) ? 16'd1 : 16'd0; // OP_SLTU
             5'b01011: Result = (A == B) ? 16'd1 : 16'd0; // OP_SEQ
             
@@ -60,8 +57,6 @@ module alu (
             
             // Math
             5'b10000: HILO_Out = A * B; // OP_MULT
-            
-            // Memory Address Calculation (Chu?n)
             5'b10100: Result = A + B; // OP_ADDR_CALC (Base + Offset)
             
             default: Result = 16'b0;
