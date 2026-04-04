@@ -1,10 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 04/04/2026 11:33:21 PM
-// Design Name: 
+ 
 // Module Name: regfile_tb
 // Project Name: 
 // Target Devices: 
@@ -55,46 +51,38 @@ module regfile_tb;
 
     initial begin
         $display("\n=== STARTING REGISTER FILE UNIT TEST ===");
-        
-        // 1. INITIALIZATION & RESET TEST
+         
         rst = 1; ce = 1; WriteEn = 0; HILO_WriteEn = 0; MTSR_WriteEn = 0; MFSR_ReadEn = 0;
         #15; rst = 0;
-
-        // 2. TEST: GHI VÀO THANH GHI $0 (Zero Protection)
-        // Mong ??i: Dù có c? ghi giá tr? 9999 vào $0, ??c ra v?n ph?i là 0
+  
         WriteAddr = 0; WriteData = 16'd9999; WriteEn = 1;
         #10;
         WriteEn = 0; ReadAddr_rs = 0;
         #1; // ??i combinational logic
         if (ReadData_rs !== 16'd0) begin $display("[FAIL] Zero Register written!"); errors = errors + 1; end
         else $display("[PASS] Zero Register Protection");
-
-        // 3. TEST: CLOCK ENABLE (CE) PROTECTION
-        // Mong ??i: Khi ce = 0, ghi vào $1 s? th?t b?i
+ 
         ce = 0; WriteAddr = 1; WriteData = 16'hAAAA; WriteEn = 1;
         #10;
         ce = 1; WriteEn = 0; ReadAddr_rs = 1;
         #1;
         if (ReadData_rs === 16'hAAAA) begin $display("[FAIL] CE bypassed!"); errors = errors + 1; end
         else $display("[PASS] Clock Enable Protection");
-
-        // 4. TEST: BÌNH TH??NG (Ghi $2, ??c $2)
+ 
         ce = 1; WriteAddr = 2; WriteData = 16'h5555; WriteEn = 1;
         #10;
         WriteEn = 0; ReadAddr_rt = 2;
         #1;
         if (ReadData_rt !== 16'h5555) begin $display("[FAIL] Normal Read/Write"); errors = errors + 1; end
         else $display("[PASS] Normal Read/Write ($2 = 5555)");
-
-        // 5. TEST: ??C/GHI SPECIAL REGISTERS (HI/LO)
+ 
         HILO_WriteEn = 1; HI_in = 16'hBEEF; LO_in = 16'hDEAD;
         #10;
         HILO_WriteEn = 0; MFSR_ReadEn = 1; Funct_MFSR = 3'b100; // ??c HI
         #1;
         if (ReadData_MFSR !== 16'hBEEF) begin $display("[FAIL] HI Register Read/Write"); errors = errors + 1; end
         else $display("[PASS] HI Register Checked");
-
-        // 6. TEST: GHI B?NG L?NH MTSR VÀ ??C B?NG MFSR (Thanh ghi RA)
+ 
         MTSR_WriteEn = 1; Funct_MTSR = 3'b010; Data_MTSR = 16'h1234; // Ghi RA
         #10;
         MTSR_WriteEn = 0; MFSR_ReadEn = 1; Funct_MFSR = 3'b010; // ??c RA
