@@ -4,7 +4,7 @@
 
 module register_file(
     input clk, rst,
-    input ce,                   // [M?I] Thêm Clock Enable
+    input ce,                 
     input [2:0] ReadAddr_rs,
     input [2:0] ReadAddr_rt,
     output [15:0] ReadData_rs,
@@ -26,23 +26,22 @@ module register_file(
     input [2:0] Funct_MFSR,    
     output reg [15:0] ReadData_MFSR
 );
-    // 8 thanh ghi ?a d?ng 16-bit
+  
     reg [15:0] registers [0:7];
-    
-    // Thanh ghi ??c bi?t
+
     reg [15:0] HI, LO;
     reg [15:0] RA, AT;
     
     integer i;
 
-    // --- 1. WRITE OPERATION (?ã b?c thêm CE) ---
+    // --- 1. WRITE OPERATION ---
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             for (i = 0; i < 8; i = i + 1) registers[i] <= 0;
             HI <= 0; LO <= 0; RA <= 0; AT <= 0;
         end
-        else if (ce) begin // [M?I] Ch? ghi khi có Clock Enable
-            if (WriteEn && (WriteAddr != 0)) begin // Không bao gi? ghi vào $0
+        else if (ce) begin  
+            if (WriteEn && (WriteAddr != 0)) begin  
                 registers[WriteAddr] <= WriteData;
             end
             
@@ -62,7 +61,7 @@ module register_file(
         end
     end
     
-    // --- 2. READ OPERATION (T? h?p - Combinational) ---
+    // --- 2. READ OPERATION ---
     assign ReadData_rs = (ReadAddr_rs == 0) ? 16'h0000 : registers[ReadAddr_rs];
     assign ReadData_rt = (ReadAddr_rt == 0) ? 16'h0000 : registers[ReadAddr_rt];
     
