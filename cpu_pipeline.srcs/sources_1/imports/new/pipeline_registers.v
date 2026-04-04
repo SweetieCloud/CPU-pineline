@@ -4,8 +4,8 @@
 
 module if_id_reg(
     input clk, reset, ce,
-    input en,           // 1 = Cho phép ghi (Ng??c l?i là Stall)
-    input flush,        // 1 = Xóa l?nh (Khi Branch taken)
+    input en,           
+    input flush,       
     input [15:0] pc_plus_2_in, instr_in,
     
     output reg [15:0] pc_plus_2_out, instr_out
@@ -14,8 +14,8 @@ module if_id_reg(
         if (reset) begin
             pc_plus_2_out <= 0;
             instr_out     <= 0; 
-        end else if (ce) begin // [M?I] Luôn ph?i ch? CE
-            if (flush) begin   // [T?I ?U] Xóa l?nh ??ng b?
+        end else if (ce) begin  
+            if (flush) begin  
                 pc_plus_2_out <= 0;
                 instr_out     <= 0;
             end else if (en) begin
@@ -30,18 +30,15 @@ module id_ex_reg(
     input clk, reset, ce, 
     input flush, 
     
-    // Control Signals
     input RegWrite_in, MemtoReg_in, MemRead_in, MemWrite_in,
     input ALUSrc_in, RegDst_in,
     input [4:0] ALUOp_in,
     input HILO_WriteEn_in, MTSR_WriteEn_in, MFSR_ReadEn_in,
     input IsBGTZ_in,
     
-    // Data Signals
     input [15:0] pc_plus_2_in, read_data1_in, read_data2_in, imm_ext_in,
     input [2:0] rs_in, rt_in, rd_in,
     
-    // Control Outputs
     output reg RegWrite_out, MemtoReg_out, MemRead_out, MemWrite_out,
     output reg ALUSrc_out, RegDst_out,
     output reg [4:0] ALUOp_out,
@@ -63,14 +60,14 @@ module id_ex_reg(
             pc_plus_2_out <= 0; read_data1_out <= 0; read_data2_out <= 0; imm_ext_out <= 0;
             rs_out <= 0; rt_out <= 0; rd_out <= 0;
         end else if (ce) begin
-            if (flush) begin // Chèn NOP khi có xung ??t (Stall)
+            if (flush) begin  
                 RegWrite_out <= 0; MemtoReg_out <= 0;
                 MemRead_out <= 0; MemWrite_out <= 0;
                 ALUSrc_out <= 0; RegDst_out <= 0;
                 ALUOp_out <= 0;
                 HILO_WriteEn_out <= 0; MTSR_WriteEn_out <= 0; MFSR_ReadEn_out <= 0;
                 IsBGTZ_out <= 0;
-                // Không nh?t thi?t xóa Data, ch? c?n xóa Control là ?? vô hi?u hóa
+   
             end else begin
                 RegWrite_out <= RegWrite_in; MemtoReg_out <= MemtoReg_in;
                 MemRead_out <= MemRead_in; MemWrite_out <= MemWrite_in;
