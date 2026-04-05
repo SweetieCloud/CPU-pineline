@@ -1,4 +1,4 @@
-<img width="608" height="244" alt="image" src="https://github.com/user-attachments/assets/e44917e7-18c6-40fb-a26c-76697fbf7506" /># 🚀 16-bit Pipelined RISC Processor & Custom Toolchain
+# 🚀 16-bit Pipelined RISC Processor & Custom Toolchain
 
 ![Verilog](https://img.shields.io/badge/Language-Verilog_HDL-blue.svg)
 ![FPGA](https://img.shields.io/badge/Platform-Xilinx_Vivado-orange.svg)
