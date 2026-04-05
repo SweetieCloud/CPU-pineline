@@ -20,13 +20,16 @@ To bridge the gap between hardware and software, this project includes a **Custo
 
 ## 🏗️ System Architecture
 
-*(Please upload a Block Diagram of your Datapath here, e.g., `docs/datapath_diagram.png`)*
 ### Core Modules
 * `cpu_top.v`: Top-level wrapper with Clock Enable (CE) mechanism and I/O routing.
 * `datapath.v`: Connects all 5 pipeline stages securely with synchronous registers.
 * `control_unit.v`: Decodes 16-bit instructions into pipeline control signals.
 * `alu.v`: Performs arithmetic/logic operations, handles Memory Address calculation, and evaluates Branch conditions (Zero, Negative, Overflow flags).
 * `hazard_unit.v` & `forwarding_unit.v`: The brain of pipeline synchronization.
+
+### 📊 Block Diagram
+<img src="images/chart.png" width="1000">
+
 
 ## 📜 Instruction Set Architecture (ISA)
 This core implements a custom 16-bit instruction set inspired by the MIPS architecture.
@@ -37,11 +40,6 @@ This core implements a custom 16-bit instruction set inspired by the MIPS archit
 | **I** | `Opcode(4) \| rs(3) \| rt(3) \| imm(6)`          | `addi`, `slti`, `lh`, `sh`, `bneq`, `bgtz` |
 | **J** | `Opcode(4) \| address(12)`                     | `j` (Jump) |
 | **Sp** | `Opcode(4) \| 000000000000`                | `hlt` (Halt execution) |
-
-
-## 📊 Block Diagram
-
-<img src="images/chart.png" width="1000">
 
 ---
 
