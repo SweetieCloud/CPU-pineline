@@ -93,12 +93,13 @@ The verification environment avoids manual waveform inspection by using **Direct
 ## 📈 Synthesis & Resource Utilization
 The design was synthesized using **Xilinx Vivado** targeting the `FPGA Arty Z7`. The core is highly optimized for area and performance.
 
-* **LUTs (Look-Up Tables) and FFs (Flip-Flops):** <img width="654" height="355" alt="image" src="https://github.com/user-attachments/assets/d25171e0-0aad-4325-8546-82d44d1d3eb6" />
+* **LUTs (Look-Up Tables) and FFs (Flip-Flops):**
+  <img width="454" height="155" alt="image" src="https://github.com/user-attachments/assets/d25171e0-0aad-4325-8546-82d44d1d3eb6" />
 
-* **Power Analysis:** <img width="929" height="317" alt="image" src="https://github.com/user-attachments/assets/032c5b74-8a7f-450b-b942-290a149a9c01" />
+* **Power Analysis:** <img width="729" height="117" alt="image" src="https://github.com/user-attachments/assets/032c5b74-8a7f-450b-b942-290a149a9c01" />
 
 * **Timing Violations:** 0 (Fully closed timing constraints)
-  <img width="608" height="244" alt="image" src="https://github.com/user-attachments/assets/b77f869b-796b-4b74-b225-de463ca52f15" />
+  <img width="408" height="144" alt="image" src="https://github.com/user-attachments/assets/b77f869b-796b-4b74-b225-de463ca52f15" />
 
 
 ---
