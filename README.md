@@ -24,7 +24,7 @@ To bridge the gap between hardware and software, this project includes a **Custo
 
 ## 🏗️ System Architecture
 
-### Core Modules
+### ⚙️ Core Modules
 * `cpu_top.v`: Top-level wrapper with Clock Enable (CE) mechanism and I/O routing.
 * `datapath.v`: Connects all 5 pipeline stages securely with synchronous registers.
 * `control_unit.v`: Decodes 16-bit instructions into pipeline control signals.
@@ -76,8 +76,8 @@ The verification environment avoids manual waveform inspection by using **Direct
   * Prints `[PASSED]` or `[FAILED]` directly to the TCL Console.
 
 ---
-
-**How to Run (Xilinx Vivado)**
+ 
+** ▶️ How to Run (Xilinx Vivado)**
 
 1. Clone this repository.
 
