@@ -41,8 +41,9 @@ This core implements a custom 16-bit instruction set inspired by the MIPS archit
 
 ## 📊 Block Diagram
 
-<img src="images/chart.jpg" width="800">
+<img src="images/chart.png" width="900">
 
+---
 
 ## 🛠️ Toolchain: Custom Python Assembler
 Writing machine code by hand is error-prone. This repository includes `assembler.py`, a custom compiler that translates Assembly into Verilog-ready Hex files.
