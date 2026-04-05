@@ -38,6 +38,12 @@ This core implements a custom 16-bit instruction set inspired by the MIPS archit
 | **J** | `Opcode(4) \| address(12)`                     | `j` (Jump) |
 | **Sp** | `Opcode(4) \| 000000000000`                | `hlt` (Halt execution) |
 
+
+## 📊 Block Diagram
+
+<img src="images/chart.jpg" width="800">
+
+
 ## 🛠️ Toolchain: Custom Python Assembler
 Writing machine code by hand is error-prone. This repository includes `assembler.py`, a custom compiler that translates Assembly into Verilog-ready Hex files.
 
