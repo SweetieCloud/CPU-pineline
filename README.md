@@ -10,6 +10,8 @@ A fully synchronous, 5-stage pipelined 16-bit RISC microprocessor designed from 
 
 To bridge the gap between hardware and software, this project includes a **Custom Python Assembler** that compiles high-level algorithmic assembly into machine hex code.
 
+---
+
 ## ✨ Key Features
 * **5-Stage Pipeline Architecture:** Instruction Fetch (IF), Decode (ID), Execute (EX), Memory (MEM), and Write-Back (WB).
 * **Advanced Hazard Resolution:** * **Forwarding Unit:** Resolves EX and MEM data hazards, including double-hazard prioritization and Zero-register bypass.
@@ -17,6 +19,8 @@ To bridge the gap between hardware and software, this project includes a **Custo
 * **Memory-Mapped I/O:** Physical peripherals (e.g., LEDs, Switches) are directly mapped to specific memory addresses (e.g., `0xFFFF`), demonstrating bare-metal embedded concepts.
 * **Custom Software Toolchain:** A dedicated Python-based assembler (`assembler.py`) with support for loop unrolling, automated binary translation, and inline comments.
 * **Robust Verification:** Fully automated testbenches featuring watchdog timers and golden-reference cross-checking. Verified under extreme stress-test algorithms (e.g., Fibonacci generation over 50+ continuous loops).
+
+---
 
 ## 🏗️ System Architecture
 
@@ -30,6 +34,7 @@ To bridge the gap between hardware and software, this project includes a **Custo
 ### 📊 Block Diagram
 <img src="images/chart.png" width="1000">
 
+---
 
 ## 📜 Instruction Set Architecture (ISA)
 This core implements a custom 16-bit instruction set inspired by the MIPS architecture.
