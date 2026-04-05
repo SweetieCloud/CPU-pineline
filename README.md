@@ -41,7 +41,7 @@ This core implements a custom 16-bit instruction set inspired by the MIPS archit
 
 ## 📊 Block Diagram
 
-<img src="images/chart.png" width="900">
+<img src="images/chart.png" width="1000">
 
 ---
 
