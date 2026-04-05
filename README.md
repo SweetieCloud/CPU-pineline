@@ -77,7 +77,7 @@ The verification environment avoids manual waveform inspection by using **Direct
 
 ---
  
-** ▶️ How to Run (Xilinx Vivado)**
+### **▶️ How to Run (Xilinx Vivado)**
 
 1. Clone this repository.
 
