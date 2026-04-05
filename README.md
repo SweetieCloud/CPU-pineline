@@ -83,28 +83,24 @@ The verification environment avoids manual waveform inspection by using **Direct
 ### **▶️ How to Run (Xilinx Vivado)**
 
 1. Clone this repository.
-
 2. Add all `.v` files in the `src/ directory` to your Vivado project.
-
 3. Run `assembler.py` to generate `program_full.hex`.
-
 4. Add `cpu_tb.v` as the top-level simulation source.
-
 5. Run Behavioral Simulation.
 
 ---
 
-## 📈 Synthesis & Resource Utilization
-The design was synthesized using **Xilinx Vivado** targeting the `[Tên board FPGA, VD: Xilinx Artix-7 XC7A35T]` FPGA. The core is highly optimized for area and performance.
+/* ## 📈 Synthesis & Resource Utilization
+The design was synthesized using **Xilinx Vivado** targeting the `FPGA Arty Z7`. The core is highly optimized for area and performance.
 
 * **LUTs (Look-Up Tables):** `[FILL HERE, VD: 1,240]` 
 * **FFs (Flip-Flops):** `[FILL HERE, VD: 350]`
 * **Maximum Operating Frequency (Fmax):** `[FILL HERE, VD: ~100 MHz]`
 * **Timing Violations:** 0 (Fully closed timing constraints)
 
----
+---*/
 
-## 🚧 Challenges & Future Work
+## ⚡️ Challenges & Future Work
 Building this architecture presented several engineering challenges:
 * **Complex Hazard Synchronization:** Managing the delicate synchronization between pipeline stages, especially handling simultaneous **Stall** (due to Load-Use hazards) and **Flush** (due to Branch instructions) in the exact same cycle without data corruption or PC misalignment.
 * **Verification Bottlenecks:** Debugging complex forwarding triggers across dozens of overlapping signals in the waveform viewer. This directly motivated the creation of our automated self-checking testbenches.
