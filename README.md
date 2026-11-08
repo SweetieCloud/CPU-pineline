@@ -335,11 +335,11 @@ Dưới đây là bảng số liệu cơ sở lịch sử (Baseline) được đ
 > [!NOTE]
 > **Minh bạch về Phạm vi Đo lường Coverage & Rào cản Kỹ thuật EDA:**
 > 1. **Phạm vi số liệu bảng (Historical 21-TB Baseline):**
->    - Báo cáo coverage dưới đây (**98.67% Line, 89.50% Branch, 58.33% Condition, 49.35% Toggle**) được trích xuất từ cơ sở dữ liệu modular đo lường **21 testbench gốc ban đầu** (từ ranch_predictor_tb đến soc_firmware_tb).
->    - Hai testbench quy mô lớn mới bổ sung là soc_pipeline_stress_tb (#22) và soc_trace_tb (#23) **CHƯA ĐƯỢC GỘP** vào cơ sở dữ liệu này. Đây là lý do các chỉ số giữ nguyên so với báo cáo ban đầu.
+>    - Báo cáo coverage dưới đây (**98.67% Line, 89.50% Branch, 58.33% Condition, 49.35% Toggle**) được trích xuất từ cơ sở dữ liệu modular đo lường **21 testbench gốc ban đầu** (từ `branch_predictor_tb` đến `soc_firmware_tb`).
+>    - Hai testbench quy mô lớn mới bổ sung là `soc_pipeline_stress_tb` (#22) và `soc_trace_tb` (#23) **CHƯA ĐƯỢC GỘP** vào cơ sở dữ liệu này. Đây là lý do các chỉ số giữ nguyên so với báo cáo ban đầu.
 > 2. **Hiện trạng lỗi công cụ biên dịch nội bộ trên Windows 11:**
 >    - Khi thực thi lệnh đo coverage tự động (xelab -cc_type sbct), trình biên dịch C nội bộ của Vivado 2022.2 trên Windows báo lỗi ERROR: [XSIM 43-3409] Failed to compile generated C file xsim_1.c ngay cả ở các module đơn lẻ như lu_tb.
->    - Hướng khắc phục chuẩn hóa trong công nghiệp: (a) Đo coverage ở cấp core độc lập (cpu_top/datapath, cô lập không gắn AXI Interconnect/RAM); (b) Chạy Vivado mô phỏng trong môi trường Linux (Ubuntu container / WSL2) để trình biên dịch GCC Linux xử lý trơn tru bảng dữ liệu instrumentation.
+>    - Hướng khắc phục chuẩn hóa trong công nghiệp: (a) Đo coverage ở cấp core độc lập (`cpu_top`/`datapath`, cô lập không gắn AXI Interconnect/RAM); (b) Chạy Vivado mô phỏng trong môi trường Linux (Ubuntu container / WSL2) để trình biên dịch GCC Linux xử lý trơn tru bảng dữ liệu instrumentation.
 > 3. **Ước lượng nhánh logic bổ sung (Dự kiến theo kịch bản, chưa đo bằng xcrg):**
 >    - Về mặt lý thuyết kịch bản kiểm thử, việc chạy 36,232 lệnh luồng điều khiển động và ma trận ngắt/stall dự kiến sẽ bao phủ các nhánh mã trước đây chưa chạm tới:
 >      * `hazard_unit.v`: Cơ chế stall 1 chu kỳ cho mul_branch_hazard (2,015 lần kích hoạt), cơ chế flush `if_id_flush` khi đoán sai nhánh (4,485 lần).
