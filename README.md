@@ -34,7 +34,7 @@
 
 ## 📌 1. TỔNG QUAN DỰ ÁN (PROJECT OVERVIEW)
 
-Dự án này là một **Hệ thống vi xử lý hoàn chỉnh trên chip (Complete System-on-Chip - SoC)** chuẩn công nghiệp, xây dựng xung quanh lõi vi xử lý **32-bit RISC-V RV32IM** 5 tầng đường ống (*5-stage in-order pipeline*). Dự án được thiết kế hoàn toàn bằng ngôn ngữ **Verilog HDL / SystemVerilog**, trải qua quy trình xác minh nghiêm ngặt (*Rolling-wave Verification*), kiểm định không vi phạm Latch, khép kín thời gian tĩnh (*Static Timing Analysis Closure*) và nạp thành công lên phần cứng thực tế kit **Digilent Arty Z7-20 (Xilinx Zynq-7000 `xc7z020clg400-1`)**.
+Dự án này là một **Hệ thống vi xử lý hoàn chỉnh trên chip (SoC)**, xây dựng xung quanh lõi vi xử lý **32-bit RISC-V RV32IM** 5 tầng đường ống (*5-stage pipeline*). Dự án được thiết kế hoàn toàn bằng ngôn ngữ **Verilog HDL / SystemVerilog**, trải qua quy trình xác minh nghiêm ngặt (*Rolling-wave Verification*), kiểm định không vi phạm Latch, khép kín thời gian tĩnh (*Static Timing Analysis Closure*) và nạp thành công lên phần cứng thực tế kit **Digilent Arty Z7-20 (Xilinx Zynq-7000 `xc7z020clg400-1`)**.
 
 ### Các trụ cột kiến trúc cốt lõi:
 1. **Lõi xử lý RISC-V RV32IM:** Hỗ trợ đầy đủ tập lệnh cơ bản RV32I (37 lệnh) kết hợp bộ đồng xử lý toán học phần cứng chuẩn **RV32M** (Hardware Multiplier 1 chu kỳ dựa trên 12 lát DSP48E1 và Hardware Divider 32 chu kỳ với cơ chế Fast-Exit khi chia cho 0 hoặc tràn số bù hai).
@@ -76,6 +76,7 @@ Dự án này là một **Hệ thống vi xử lý hoàn chỉnh trên chip (Com
 ### 3.1 Sơ đồ khối tổng thể Hệ thống trên Chip (SoC Top Architecture)
 
 ```mermaid
+
 flowchart TD
     subgraph ARTY_Z7 ["DIGILENT ARTY Z7-20 HARDWARE PLATFORM"]
         CLK_IN["Oscillator 125.0 MHz (Pin H16)"]
@@ -86,7 +87,7 @@ flowchart TD
     end
 
     subgraph SOC_WRAPPER ["soc_top_arty_z7 (Board Top Wrapper)"]
-        MMCM["MMCME2_BASE\n(125MHz -> 50MHz Low-Jitter Clock)"]
+        MMCM["MMCME2_BASE\n(125MHz to 50MHz Low-Jitter Clock)"]
         SYNC_RST["3-Stage Synchronous Reset Synchronizer"]
     end
 
@@ -341,9 +342,9 @@ Dưới đây là bảng số liệu cơ sở lịch sử (Baseline) được đ
 >    - Hướng khắc phục chuẩn hóa trong công nghiệp: (a) Đo coverage ở cấp core độc lập (cpu_top/datapath, cô lập không gắn AXI Interconnect/RAM); (b) Chạy Vivado mô phỏng trong môi trường Linux (Ubuntu container / WSL2) để trình biên dịch GCC Linux xử lý trơn tru bảng dữ liệu instrumentation.
 > 3. **Ước lượng nhánh logic bổ sung (Dự kiến theo kịch bản, chưa đo bằng xcrg):**
 >    - Về mặt lý thuyết kịch bản kiểm thử, việc chạy 36,232 lệnh luồng điều khiển động và ma trận ngắt/stall dự kiến sẽ bao phủ các nhánh mã trước đây chưa chạm tới:
->      * hazard_unit.v: Cơ chế stall 1 chu kỳ cho mul_branch_hazard (2,015 lần kích hoạt), cơ chế flush if_id_flush khi đoán sai nhánh (4,485 lần).
->      * ranch_predictor.v: Cập nhật chuyển trạng thái bộ đếm bão hòa BHT 2-bit (7,791 lần), kiểm tra Tag BTB và chuyển hướng PC.
->      * datapath.v: Giải mã và tính toán địa chỉ rẽ nhánh ranch_comparator, jal/jalr, nạp địa chỉ uipc, mở rộng có dấu/không dấu cho lb, lh, lbu, lhu.
+>      * `hazard_unit.v`: Cơ chế stall 1 chu kỳ cho mul_branch_hazard (2,015 lần kích hoạt), cơ chế flush `if_id_flush` khi đoán sai nhánh (4,485 lần).
+>      * `branch_predictor.v`: Cập nhật chuyển trạng thái bộ đếm bão hòa BHT 2-bit (7,791 lần), kiểm tra Tag BTB và chuyển hướng PC.
+>      * `datapath.v`: Giải mã và tính toán địa chỉ rẽ nhánh `branch_comparator`, `jal/jalr`, nạp địa chỉ pc, mở rộng có dấu/không dấu cho `lb`, `lh`, `lbu`, `lhu`.
 > 4. **Phân định Toggle Coverage giữa BRAM và Register File:**
 >    - BRAM (`ram_reg` 131,072 bit) bị xSim bỏ qua do vượt trần 32,768 bit (`WARNING: The total size of variable ram is 131072. Skipping this variable from Toggle Coverage as the maximum size is limited to 32768`).
 >    - Register file (`registers` 1,024 bit) dưới ngưỡng 32k-bit, nhưng bị xSim bỏ qua do thiết kế công cụ không đo toggle trên mảng 2 chiều không đóng gói (`reg [31:0] registers [31:0]`).
@@ -410,7 +411,6 @@ $$\text{Tổng điểm Đột biến Toàn diện (Overall Mutation Score)} = \f
 > 2. **Sự cần thiết của Kiến trúc Kiểm chứng Phân tầng (Layered DV Hierarchy):**
 >    - Các mutant `MUT-03`, `HARD-05`, `HARD-06` (liên quan đến ngắt Timer, cờ MIE và thanh ghi MEPC) *sống sót* trước trace thuần túy, nhưng bị tiêu diệt dứt điểm bởi `soc_interrupt_tb` và `soc_pipeline_stress_tb`.
 >    - Các mutant `HARD-09`, `HARD-10` (chia cho 0 và tràn số chia có dấu) bị tiêu diệt chính xác bởi `divider_tb` và `soc_isa_tb`.
->    - Điều này chứng minh tính bổ trợ hoàn hảo: không một testbench đơn lẻ nào có thể bắt được mọi góc ngách, nhưng tổng thể 9 tầng kiểm chứng tạo thành một tấm lưới bảo vệ không có kẽ hở.
 
 ---
 
@@ -420,7 +420,7 @@ $$\text{Tổng điểm Đột biến Toàn diện (Overall Mutation Score)} = \f
 - **Tại sao cần kiến trúc phân lô (Batched Architecture)?**
   Bộ nhớ BRAM tích hợp trong SoC có kích thước 16 KB (chứa tối đa 4,096 lệnh 32-bit). Một chương trình đơn khối chứa 36,000 lệnh sẽ chiếm 144 KB, gây tràn bộ nhớ BRAM vật lý. Giải pháp kỹ thuật chuẩn mực là chia 100 seed thành 10 lô độc lập (mỗi lô chứa 10 seed $\times$ ~360 lệnh $\approx 3,600$ lệnh $\approx 14$ KB, nằm gọn an toàn trong 16 KB BRAM).
 - **Phân loại tập lệnh & Số liệu Vi kiến trúc Thực nghiệm:**
-  Trong tổng số **36,232 lệnh hưu trí**, hệ thống ghi nhận sự kích thích mạnh mẽ của mọi cơ chế đường ống:
+  Trong tổng số **36,232 lệnh**, hệ thống ghi nhận sự kích thích mạnh mẽ của mọi cơ chế đường ống:
   - **Tỷ lệ RAW Hazard liên tiếp:** $11,377 / 36,232 \approx \mathbf{31.40\%}$.
   - **Xung đột Multiplier-to-Branch:** **2,015 lần** chèn bong bóng stall thành công tại tầng ID để bảo vệ critical path DSP.
   - **Rẽ nhánh đoán sai (Branch Mispredict):** **4,485 lần** phát hiện và kích hoạt `if_id_flush` xóa sạch bóng lệnh đầu cơ.
@@ -484,9 +484,6 @@ Trong kịch bản [`coverage/soc_pipeline_stress.s`](coverage/soc_pipeline_stre
 4. **Hành vi cắt tỉa khi truy xuất không căn chỉnh (Unaligned Access Truncation at `0x428`):**
    - Từ cơ sở tại `0x428` là `0xAABBCCDD`.
    - Thực hiện lệnh `LH` từ địa chỉ lẻ `0x429` (offset 1): phần cứng cắt tỉa theo bit `addr[1] == 0`, trả về đúng nửa từ thấp có dấu **`0xFFFFCCDD`** vào thanh ghi `x18`.
-   - > [!WARNING]
-     > **Đánh giá mức độ tuân thủ đặc tả RISC-V (Spec Compliance Note):**
-     > Theo **Đặc tả kiến trúc tập lệnh RISC-V Unprivileged ISA Specification (Volume I, Section 2.6)**: Một vi kiến trúc chuẩn bắt buộc phải hỗ trợ truy cập lệch địa chỉ một cách tự nhiên trong phần cứng (transparent hardware handling) hoặc kích hoạt ngoại lệ bẫy lỗi địa chỉ (`Load Address Misaligned Exception`, `mcause = 4`). Việc vi điều khiển hiện tại cắt tỉa địa chỉ (`addr[1:0]`) để trả về nửa từ căn chỉnh thấp là **hành vi tùy biến phần cứng không hoàn toàn tuân thủ đặc tả RISC-V chuẩn (implementation-defined shortcut truncation non-compliant with standard RISC-V specification)**, được áp dụng có chủ đích nhằm tối ưu diện tích logic trên hệ thống nhúng bare-metal.
 
 ---
 
@@ -579,7 +576,6 @@ Cấu trúc repository đã được chuẩn hóa, dọn dẹp sạch toàn bộ
 
 ```text
 CPU-pipeline/
-├── .gitignore                       # Bộ lọc tệp gitignore chuẩn công nghiệp cho Vivado & RISC-V
 ├── README.md                        # Tài liệu tổng quan kiến trúc, đặc tả & kết quả kiểm chứng
 ├── cpu_pipeline.srcs/               # Mã nguồn RTL & Unit Test lõi vi xử lý RV32IM cơ bản
 │   ├── sources_1/imports/new/
@@ -682,8 +678,7 @@ CPU-pipeline/
 │   ├── stage2/checkpoint.md         # Nghiệm thu Giai đoạn 2 (RV32M & Branch Predictor)
 │   ├── stage3/checkpoint.md         # Nghiệm thu Giai đoạn 3 (AXI4-Lite & MMIO SoC)
 │   └── stage4/checkpoint.md         # Nghiệm thu Giai đoạn 4 (FPGA Implementation & Bitstream)
-└── images/
-    └── chart.png                    # Biểu đồ tài nguyên phần cứng
+└── .gitignore                       # Bộ lọc tệp gitignore chuẩn công nghiệp cho Vivado & RISC-V
 ```
 
 ---
@@ -693,7 +688,7 @@ CPU-pipeline/
 ### 10.1 Biên dịch Firmware sang file Hex (Không cần cài GCC)
 Sử dụng trình biên dịch độc lập `tools/rv32im_assembler.py`:
 ```powershell
-Set-Location "C:\Users\BuiThanhQui\CPU-pineline"
+Set-Location "C:\Users\CPU-pineline"
 
 # 1. Biên dịch firmware hợp ngữ sang định dạng Hex
 python tools/rv32im_assembler.py sw/firmware_demo.s sw/program.hex
@@ -740,7 +735,7 @@ C:\Xilinx\Vivado\2022.2\bin\xsim.bat soc_firmware_sim -R
 #### B. Chạy mô phỏng các testbench đơn vị ngoại vi & toán học
 Ví dụ chạy kiểm thử ngoại vi UART Lite với khả năng chống nhiễu và phát hiện lỗi khung truyền:
 ```powershell
-Set-Location "C:\Users\BuiThanhQui\simwork"
+Set-Location "C:\Users\simwork"
 C:\Xilinx\Vivado\2022.2\bin\xvlog.bat --sv -i "vivado/vivado.srcs/sources_1/new" "vivado/vivado.srcs/sources_1/new/axi_uart_lite.v" "vivado/vivado.srcs/sim_1/new/axi_uart_lite_tb.v"
 C:\Xilinx\Vivado\2022.2\bin\xelab.bat axi_uart_lite_tb -s uart_sim -R
 ```
@@ -767,7 +762,7 @@ C:\Xilinx\Vivado\2022.2\bin\vivado.bat -mode batch -source program_fpga.tcl
 
 ---
 
-## ⚠️ 8. CÁC GIỚI HẠN KIẾN TRÚC ĐÃ BIẾT (KNOWN LIMITATIONS)
+## 11. CÁC GIỚI HẠN KIẾN TRÚC ĐÃ BIẾT (KNOWN LIMITATIONS)
 
 Để đảm bảo tính minh bạch kỹ thuật và độ tin cậy trong môi trường công nghiệp, các giới hạn vi kiến trúc và kiểm thử hiện tại được công bố rõ ràng như sau:
 
@@ -779,7 +774,7 @@ C:\Xilinx\Vivado\2022.2\bin\vivado.bat -mode batch -source program_fpga.tcl
 
 ---
 
-## 💎 11. KẾT LUẬN & ĐÁNH GIÁ CHẤT LƯỢNG
+## 💎 12. KẾT LUẬN & ĐÁNH GIÁ CHẤT LƯỢNG
 
 Dự án đã hoàn thành đầy đủ mọi tiêu chuẩn thiết kế vi mạch công nghiệp:
 - **Chuẩn hóa kiến trúc:** Tuân thủ chặt chẽ đặc tả kiến trúc tập lệnh RISC-V RV32IM và giao thức bus chuẩn quốc tế AMBA AXI4-Lite.
