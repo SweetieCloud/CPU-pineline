@@ -1,177 +1,260 @@
-/* * File: control_unit.v
- */
 `timescale 1ns / 1ps
+`include "defines.vh"
 
-module control_unit(
-    input [3:0] opcode,
-    input [2:0] funct,
-    
-    // --- Control Signals ---
-    output reg RegWrite,
-    output reg MemtoReg,    // 0=ALU, 1=Mem
-    output reg MemRead,
-    output reg MemWrite,
-    output reg ALUSrc,      // 0=Reg, 1=Imm
-    output reg RegDst,      // 0=$rt, 1=$rd
-    output reg Branch,      // 1=Lá»‡nh Branch (BNEQ, BGTZ)
-    output reg Jump,        // 1=Lá»‡nh Jump
-    output reg [4:0] ALUOp,
-    output reg JumpReg,
-    output reg HILO_WriteEn,
-    output reg MTSR_WriteEn,
-    output reg MFSR_ReadEn,
-    output reg IsBGTZ,
-    output reg Halt
+module control_unit (
+    input  wire [6:0]  i_opcode,
+    input  wire [2:0]  i_funct3,
+    input  wire [6:0]  i_funct7,
+    input  wire [11:0] i_funct12,
+
+    // Tin hieu dieu khien Register File & Datapath
+    output reg        o_reg_write,
+    output reg [1:0]  o_wb_src,        // 00: ALU, 01: Mem, 10: PC+4, 11: CSR
+    output reg        o_alu_src_a,     // 0: RS1, 1: PC (cho AUIPC)
+    output reg        o_alu_src_b,     // 0: RS2, 1: Immediate
+    output reg [2:0]  o_imm_src,       // Kieu mo rong hang so
+    output reg [3:0]  o_alu_op,        // Ma phep toan ALU
+
+    // Tin hieu dieu khien Re nhanh / Nhay
+    output reg        o_branch,        // Tin hieu re nhanh co dieu kien
+    output reg        o_jump,          // Nhay khong dieu kien JAL
+    output reg        o_jump_reg,      // Nhay qua thanh ghi JALR
+
+    // Tin hieu giao tiep Bo nho / Bus
+    output reg        o_mem_req_read,
+    output reg        o_mem_req_write,
+
+    // Tin hieu CSR & He thong
+    output reg [1:0]  o_csr_op,        // 00: None, 01: Write, 10: Set, 11: Clear
+    output reg        o_ecall_halt,    // Tin hieu dung mo phong / bao su kien he thong
+    output reg        o_mret,          // Lenh quay ve tu Trap (MRET)
+
+    // Tin hieu bao thanh ghi nguon duoc su dung (chong False Stall trong Hazard Unit)
+    output reg        o_uses_rs1,
+    output reg        o_uses_rs2,
+
+    // Tin hieu dieu khien M-extension (RV32M Multiplier / Divider)
+    output reg        o_is_mul,
+    output reg        o_is_div,
+
+    // Tin hieu dong bo Cache (FENCE.I)
+    output reg        o_icache_inv
 );
 
-    // --- ALU OP CODES ---
-    parameter OP_ADD       = 5'b00001;
-    parameter OP_ADDU      = 5'b00010;
-    parameter OP_SUB       = 5'b00011;
-    parameter OP_SUBU      = 5'b00100;
-    parameter OP_AND       = 5'b00101;
-    parameter OP_OR        = 5'b00110;
-    parameter OP_NOR       = 5'b00111;
-    parameter OP_XOR       = 5'b01000;
-    parameter OP_SLT       = 5'b01001;
-    parameter OP_SLTU      = 5'b01010;
-    parameter OP_SEQ       = 5'b01011;
-    parameter OP_SHR       = 5'b01100;
-    parameter OP_SHL       = 5'b01101;
-    parameter OP_ROR       = 5'b01110;
-    parameter OP_ROL       = 5'b01111;
-    parameter OP_MULT      = 5'b10000;
-    parameter OP_MULTU     = 5'b10001;
-    parameter OP_DIV       = 5'b10010;
-    parameter OP_DIVU      = 5'b10011;
-    parameter OP_ADDR_CALC = 5'b10100; 
-
     always @(*) begin
-        RegWrite     = 0;
-        MemtoReg     = 0;
-        MemRead      = 0;
-        MemWrite     = 0;
-        ALUSrc       = 0;
-        RegDst       = 0;
-        Branch       = 0;
-        Jump         = 0;
-        JumpReg      = 0;
-        ALUOp        = 5'b00000;
-        HILO_WriteEn = 0;
-        MTSR_WriteEn = 0;
-        MFSR_ReadEn  = 0;
-        IsBGTZ       = 0;
-        Halt = 0;
+        // ---------------------------------------------------------------------
+        // GIA TRI MAC DINH (TRANH SINH LATCH)
+        // ---------------------------------------------------------------------
+        o_reg_write     = 1'b0;
+        o_wb_src        = `WB_SRC_ALU;
+        o_alu_src_a     = 1'b0;
+        o_alu_src_b     = 1'b0;
+        o_imm_src       = `IMM_I;
+        o_alu_op        = `ALU_ADD;
+        o_branch        = 1'b0;
+        o_jump          = 1'b0;
+        o_jump_reg      = 1'b0;
+        o_mem_req_read  = 1'b0;
+        o_mem_req_write = 1'b0;
+        o_csr_op        = 2'b00;
+        o_ecall_halt    = 1'b0;
+        o_mret          = 1'b0;
+        o_uses_rs1      = 1'b0;
+        o_uses_rs2      = 1'b0;
+        o_is_mul        = 1'b0;
+        o_is_div        = 1'b0;
+        o_icache_inv    = 1'b0;
 
-        // Main Decoding
-        case (opcode)
-            4'b0000: begin // ALU0 (R-Type)
-                RegWrite = 1;
-                RegDst   = 1; 
-                ALUSrc   = 0;
- 
-                case(funct)
-                    3'b000: ALUOp = OP_ADDU;
-                    3'b001: ALUOp = OP_SUBU;
-                    3'b010: begin ALUOp = OP_MULTU; HILO_WriteEn = 1; end
-                    3'b011: begin ALUOp = OP_DIVU;  HILO_WriteEn = 1; end
-                    3'b100: ALUOp = OP_AND;
-                    3'b101: ALUOp = OP_OR;
-                    3'b110: ALUOp = OP_NOR;
-                    3'b111: ALUOp = OP_XOR;
-                endcase
-            end
-            
-            4'b0001: begin // ALU1 (R-Type)
-                ALUSrc = 0;
-                RegDst = 1;
-                case(funct)
-                    3'b000: begin ALUOp = OP_ADD; RegWrite = 1; end
-                    3'b001: begin ALUOp = OP_SUB; RegWrite = 1; end
-                    3'b010: begin ALUOp = OP_MULT; HILO_WriteEn = 1; RegWrite = 1; end
-                    3'b011: begin ALUOp = OP_DIV;  HILO_WriteEn = 1; RegWrite = 1; end
-                    3'b100: begin ALUOp = OP_SLT; RegWrite = 1; end
-                    3'b101: begin ALUOp = OP_SEQ; RegWrite = 1; end
-                    3'b110: begin ALUOp = OP_SLTU; RegWrite = 1; end
-                    3'b111: begin // jr $rs
-                         JumpReg = 1;
+        // ---------------------------------------------------------------------
+        // GIAI MA TAP LENH RV32I / RV32M
+        // ---------------------------------------------------------------------
+        case (i_opcode)
+            `OPCODE_OP: begin // R-Type ALU hoac RV32M
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_ALU;
+                o_alu_src_a = 1'b0;
+                o_alu_src_b = 1'b0;
+                o_uses_rs1  = 1'b1;
+                o_uses_rs2  = 1'b1;
+
+                if (i_funct7 == `FUNCT7_M_EXT) begin
+                    // RV32M Extension (funct3[2] = 0: MUL*, funct3[2] = 1: DIV*/REM*)
+                    if (i_funct3[2]) begin
+                        o_is_div = 1'b1;
+                    end else begin
+                        o_is_mul = 1'b1;
                     end
+                end else begin
+                    case (i_funct3)
+                        3'b000:  o_alu_op = (i_funct7[5]) ? `ALU_SUB : `ALU_ADD; // SUB / ADD
+                        3'b001:  o_alu_op = `ALU_SLL;  // SLL
+                        3'b010:  o_alu_op = `ALU_SLT;  // SLT
+                        3'b011:  o_alu_op = `ALU_SLTU; // SLTU
+                        3'b100:  o_alu_op = `ALU_XOR;  // XOR
+                        3'b101:  o_alu_op = (i_funct7[5]) ? `ALU_SRA : `ALU_SRL; // SRA / SRL
+                        3'b110:  o_alu_op = `ALU_OR;   // OR
+                        3'b111:  o_alu_op = `ALU_AND;  // AND
+                        default: o_alu_op = `ALU_ADD;
+                    endcase
+                end
+            end
+
+            `OPCODE_OP_IMM: begin // I-Type ALU (ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI)
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_ALU;
+                o_alu_src_a = 1'b0;
+                o_alu_src_b = 1'b1;
+                o_imm_src   = `IMM_I;
+                o_uses_rs1  = 1'b1;
+                o_uses_rs2  = 1'b0; // Khong dung RS2!
+
+                case (i_funct3)
+                    3'b000:  o_alu_op = `ALU_ADD;  // ADDI
+                    3'b001:  o_alu_op = `ALU_SLL;  // SLLI
+                    3'b010:  o_alu_op = `ALU_SLT;  // SLTI
+                    3'b011:  o_alu_op = `ALU_SLTU; // SLTIU
+                    3'b100:  o_alu_op = `ALU_XOR;  // XORI
+                    3'b101:  o_alu_op = (i_funct7[5]) ? `ALU_SRA : `ALU_SRL; // SRAI / SRLI
+                    3'b110:  o_alu_op = `ALU_OR;   // ORI
+                    3'b111:  o_alu_op = `ALU_AND;  // ANDI
+                    default: o_alu_op = `ALU_ADD;
                 endcase
             end
-            
-            4'b0010: begin // ALU2 (Shift - R-Type)
-                RegWrite = 1;
-                RegDst   = 1;
-                ALUSrc   = 0;
-                case(funct)
-                    3'b000: ALUOp = OP_SHR;
-                    3'b001: ALUOp = OP_SHL;
-                    3'b010: ALUOp = OP_ROR;
-                    3'b011: ALUOp = OP_ROL;
+
+            `OPCODE_LOAD: begin // Load (LB, LH, LW, LBU, LHU)
+                o_reg_write    = 1'b1;
+                o_wb_src       = `WB_SRC_MEM;
+                o_alu_src_a    = 1'b0;
+                o_alu_src_b    = 1'b1;
+                o_imm_src      = `IMM_I;
+                o_alu_op       = `ALU_ADD;
+                o_mem_req_read = 1'b1;
+                o_uses_rs1     = 1'b1;
+                o_uses_rs2     = 1'b0; // Khong dung RS2!
+            end
+
+            `OPCODE_STORE: begin // Store (SB, SH, SW)
+                o_reg_write     = 1'b0;
+                o_alu_src_a     = 1'b0;
+                o_alu_src_b     = 1'b1;
+                o_imm_src       = `IMM_S;
+                o_alu_op        = `ALU_ADD;
+                o_mem_req_write = 1'b1;
+                o_uses_rs1      = 1'b1;
+                o_uses_rs2      = 1'b1; // RS2 la du lieu can ghi vao bo nho
+            end
+
+            `OPCODE_BRANCH: begin // Branch (BEQ, BNE, BLT, BGE, BLTU, BGEU)
+                o_reg_write = 1'b0;
+                o_branch    = 1'b1;
+                o_imm_src   = `IMM_B;
+                o_alu_op    = `ALU_SUB;
+                o_uses_rs1  = 1'b1;
+                o_uses_rs2  = 1'b1;
+            end
+
+            `OPCODE_LUI: begin // U-Type LUI (Load Upper Immediate)
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_ALU;
+                o_alu_src_a = 1'b0;
+                o_alu_src_b = 1'b1;
+                o_imm_src   = `IMM_U;
+                o_alu_op    = `ALU_COPY_B;
+                o_uses_rs1  = 1'b0;
+                o_uses_rs2  = 1'b0;
+            end
+
+            `OPCODE_AUIPC: begin // U-Type AUIPC (Add Upper Immediate to PC)
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_ALU;
+                o_alu_src_a = 1'b1; // Chon toan hang A tu PC
+                o_alu_src_b = 1'b1; // Chon toan hang B tu Immediate
+                o_imm_src   = `IMM_U;
+                o_alu_op    = `ALU_ADD;
+                o_uses_rs1  = 1'b0;
+                o_uses_rs2  = 1'b0;
+            end
+
+            `OPCODE_JAL: begin // J-Type JAL (Jump and Link)
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_PC_PLUS4; // Luu PC+4 vao thanh ghi rd!
+                o_jump      = 1'b1;
+                o_imm_src   = `IMM_J;
+                o_uses_rs1  = 1'b0;
+                o_uses_rs2  = 1'b0;
+            end
+
+            `OPCODE_JALR: begin // I-Type JALR (Jump and Link Register)
+                o_reg_write = 1'b1;
+                o_wb_src    = `WB_SRC_PC_PLUS4; // Luu PC+4 vao thanh ghi rd!
+                o_jump_reg  = 1'b1;
+                o_alu_src_a = 1'b0;
+                o_alu_src_b = 1'b1;
+                o_imm_src   = `IMM_I;
+                o_alu_op    = `ALU_ADD;
+                o_uses_rs1  = 1'b1;
+                o_uses_rs2  = 1'b0;
+            end
+
+            `OPCODE_MISC_MEM: begin // FENCE (000) & FENCE.I (001)
+                if (i_funct3 == 3'b001) begin
+                    o_icache_inv = 1'b1; // FENCE.I: Xoa sach L1 Instruction Cache
+                end
+            end
+
+            `OPCODE_SYSTEM: begin // CSR & ECALL/EBREAK/MRET
+                case (i_funct3)
+                    3'b000: begin
+                        if (i_funct12 == 12'h302) begin
+                            o_mret       = 1'b1; // MRET (Return from Machine Mode Trap)
+                            o_ecall_halt = 1'b0;
+                        end else begin
+                            o_mret       = 1'b0;
+                            o_ecall_halt = 1'b1; // ECALL / EBREAK
+                        end
+                    end
+                    `FUNCT3_CSRRW: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b01; // CSR Write
+                        o_uses_rs1  = 1'b1;
+                    end
+                    `FUNCT3_CSRRS: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b10; // CSR Bit Set
+                        o_uses_rs1  = 1'b1;
+                    end
+                    `FUNCT3_CSRRC: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b11; // CSR Bit Clear
+                        o_uses_rs1  = 1'b1;
+                    end
+                    `FUNCT3_CSRRWI: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b01; // CSR Write Immediate (zimm[4:0])
+                        o_uses_rs1  = 1'b0;
+                    end
+                    `FUNCT3_CSRRSI: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b10; // CSR Bit Set Immediate (zimm[4:0])
+                        o_uses_rs1  = 1'b0;
+                    end
+                    `FUNCT3_CSRRCI: begin
+                        o_reg_write = 1'b1;
+                        o_wb_src    = `WB_SRC_CSR;
+                        o_csr_op    = 2'b11; // CSR Bit Clear Immediate (zimm[4:0])
+                        o_uses_rs1  = 1'b0;
+                    end
+                    default: ;
                 endcase
             end
-            
-            4'b0011: begin // ADDI
-                RegWrite = 1;
-                RegDst   = 0;  
-                ALUSrc   = 1;  
-                ALUOp    = OP_ADDU; 
-            end
-            
-            4'b0100: begin // SLTI
-                RegWrite = 1;
-                RegDst   = 0;
-                ALUSrc   = 1;
-                ALUOp    = OP_SLT;
-            end
-            
-            4'b0101: begin // BNEQ
-                Branch   = 1;
-                ALUSrc   = 0;
-                ALUOp    = OP_SUBU;  
-            end
-            
-            4'b0110: begin // BGTZ
-                Branch   = 1;
-                IsBGTZ   = 1;
-                ALUSrc   = 0; // Check $rs
-                ALUOp    = OP_SUBU;  
-            end
-            
-            4'b0111: begin // JUMP
-                Jump     = 1;
-            end
-            
-            4'b1000: begin // LH
-                RegWrite = 1;
-                RegDst   = 0;
-                ALUSrc   = 1;
-                MemRead  = 1;
-                MemtoReg = 1;  
-                ALUOp    = OP_ADDR_CALC;  
-            end
-            
-            4'b1001: begin // SH
-                MemWrite = 1;
-                ALUSrc   = 1;
-                ALUOp    = OP_ADDR_CALC;  
-            end
-            
-            4'b1010: begin // MFSR
-                RegWrite    = 1;
-                RegDst      = 1;
-                MFSR_ReadEn = 1;
-            end
-            
-            4'b1011: begin // MTSR
-                MTSR_WriteEn = 1;
-            end
-            
-            4'b1111: begin // HLT
-                Halt = 1;
-                RegWrite = 0;
-                MemWrite = 0;
-            end
+
+            default: ;
         endcase
     end
-endmodule 
+
+endmodule

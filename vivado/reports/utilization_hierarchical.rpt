@@ -1,0 +1,52 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Sun Nov  8 07:16:29 2026
+| Host         : DESKTOP-7LE9N0Q running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file reports/utilization_hierarchical.rpt
+| Design       : soc_top_arty_z7
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------+-------------------+------------+------------+---------+------+------+--------+--------+------------+
+|         Instance        |       Module      | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------+-------------------+------------+------------+---------+------+------+--------+--------+------------+
+| soc_top_arty_z7         |             (top) |       4073 |       3747 |     326 |    0 | 1955 |      4 |      0 |         12 |
+|   (soc_top_arty_z7)     |             (top) |        177 |          1 |     176 |    0 |    3 |      0 |      0 |          0 |
+|   soc_inst              |           soc_top |       3896 |       3746 |     150 |    0 | 1952 |      4 |      0 |         12 |
+|     (soc_inst)          |           soc_top |          0 |          0 |       0 |    0 |    6 |      0 |      0 |          0 |
+|     bram_inst           |    dual_port_bram |          0 |          0 |       0 |    0 |    0 |      4 |      0 |          0 |
+|     cpu_inst            |           cpu_top |       3604 |       3454 |     150 |    0 | 1545 |      0 |      0 |         12 |
+|       axi_d_master_inst | axi_lite_master_d |        218 |        218 |       0 |    0 |  142 |      0 |      0 |          0 |
+|       datapath_inst     |          datapath |       3077 |       2957 |     120 |    0 | 1260 |      0 |      0 |         12 |
+|         (datapath_inst) |          datapath |          2 |          2 |       0 |    0 |   35 |      0 |      0 |          0 |
+|         EX_MEM          |        ex_mem_reg |        212 |        212 |       0 |    0 |  156 |      0 |      0 |          0 |
+|         ID_EX           |         id_ex_reg |        867 |        867 |       0 |    0 |  169 |      0 |      0 |          0 |
+|         IF_ID           |         if_id_reg |        603 |        603 |       0 |    0 |   97 |      0 |      0 |          0 |
+|         MEM_WB          |        mem_wb_reg |        600 |        600 |       0 |    0 |  151 |      0 |      0 |          0 |
+|         bp_inst         |  branch_predictor |        299 |        223 |      76 |    0 |  192 |      0 |      0 |          0 |
+|         csr_inst        |          csr_file |         43 |         43 |       0 |    0 |  352 |      0 |      0 |          0 |
+|         div_inst        |           divider |        220 |        220 |       0 |    0 |  108 |      0 |      0 |          0 |
+|         imm_generator   |           imm_gen |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|         mul_inst        |        multiplier |        189 |        189 |       0 |    0 |    0 |      0 |      0 |         12 |
+|         reg_file        |     register_file |         44 |          0 |      44 |    0 |    0 |      0 |      0 |          0 |
+|       icache_inst       |            icache |        310 |        280 |      30 |    0 |  143 |      0 |      0 |          0 |
+|     gpio_inst           |          axi_gpio |         33 |         33 |       0 |    0 |   92 |      0 |      0 |          0 |
+|     interconnect_inst   |  axi_interconnect |         17 |         17 |       0 |    0 |   13 |      0 |      0 |          0 |
+|     timer_inst          |         axi_timer |        147 |        147 |       0 |    0 |  173 |      0 |      0 |          0 |
+|     uart_inst           |     axi_uart_lite |         98 |         98 |       0 |    0 |  123 |      0 |      0 |          0 |
++-------------------------+-------------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

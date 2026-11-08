@@ -1,0 +1,2109 @@
+{
+  "testbenches": [
+    {
+      "testbench": "alu_tb",
+      "dut": "alu.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "alu_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sim_1/new/alu_tb.v",
+          "stmt_score": 75.7576,
+          "lines": 65.0,
+          "stmts": 99.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 74.06
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 100.0,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 85.7143,
+          "cond_score": 33.3333,
+          "toggle_score": 65.5
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+        "stmt_score": 100.0,
+        "lines": 14.0,
+        "stmts": 14.0,
+        "branch_score": 85.7143,
+        "cond_score": 33.3333,
+        "toggle_score": 65.5
+      }
+    },
+    {
+      "testbench": "forwarding_tb",
+      "dut": "forwarding_unit.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "forwarding_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sim_1/new/forwarding_tb.v",
+          "stmt_score": 82.7586,
+          "lines": 38.0,
+          "stmts": 58.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 23.27
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 80.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 66.6667,
+          "cond_score": 75.0,
+          "toggle_score": 51.92
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+        "stmt_score": 80.0,
+        "lines": 10.0,
+        "stmts": 10.0,
+        "branch_score": 66.6667,
+        "cond_score": 75.0,
+        "toggle_score": 51.92
+      }
+    },
+    {
+      "testbench": "control_unit_tb",
+      "dut": "control_unit.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "control_unit_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sim_1/new/control_unit_tb.v",
+          "stmt_score": 100.0,
+          "lines": 59.0,
+          "stmts": 59.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 89.09
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 98.6014,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 92.8571,
+          "cond_score": 100.0,
+          "toggle_score": 89.09
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+        "stmt_score": 98.6014,
+        "lines": 143.0,
+        "stmts": 143.0,
+        "branch_score": 92.8571,
+        "cond_score": 100.0,
+        "toggle_score": 89.09
+      }
+    },
+    {
+      "testbench": "csr_file_tb",
+      "dut": "csr_file.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "csr_file_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/csr_file_tb.v",
+          "stmt_score": 92.4731,
+          "lines": 91.0,
+          "stmts": 93.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 30.93
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 94.8276,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 92.5,
+          "cond_score": 100.0,
+          "toggle_score": 21.62
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+        "stmt_score": 94.8276,
+        "lines": 58.0,
+        "stmts": 58.0,
+        "branch_score": 92.5,
+        "cond_score": 100.0,
+        "toggle_score": 21.62
+      }
+    },
+    {
+      "testbench": "regfile_tb",
+      "dut": "register_file.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "regfile_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sim_1/new/regfile_tb.v",
+          "stmt_score": 86.8852,
+          "lines": 37.0,
+          "stmts": 61.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 42.12
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 87.5,
+          "cond_score": 100.0,
+          "toggle_score": 0.49
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+        "stmt_score": 100.0,
+        "lines": 6.0,
+        "stmts": 6.0,
+        "branch_score": 87.5,
+        "cond_score": 100.0,
+        "toggle_score": 0.49
+      }
+    },
+    {
+      "testbench": "branch_predictor_tb",
+      "dut": "branch_predictor.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "branch_predictor_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/branch_predictor_tb.v",
+          "stmt_score": 91.3462,
+          "lines": 102.0,
+          "stmts": 104.0,
+          "branch_score": 83.3333,
+          "cond_score": 50.0,
+          "toggle_score": 10.23
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 95.2381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 94.1176,
+          "cond_score": 0.0,
+          "toggle_score": 0.71
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+        "stmt_score": 95.2381,
+        "lines": 21.0,
+        "stmts": 21.0,
+        "branch_score": 94.1176,
+        "cond_score": 0.0,
+        "toggle_score": 0.71
+      }
+    },
+    {
+      "testbench": "multiplier_tb",
+      "dut": "multiplier.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "multiplier_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/multiplier_tb.v",
+          "stmt_score": 90.1961,
+          "lines": 51.0,
+          "stmts": 51.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 50.0
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 83.3333,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 80.0,
+          "cond_score": 0.0,
+          "toggle_score": 91.45
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+        "stmt_score": 83.3333,
+        "lines": 6.0,
+        "stmts": 6.0,
+        "branch_score": 80.0,
+        "cond_score": 0.0,
+        "toggle_score": 91.45
+      }
+    },
+    {
+      "testbench": "divider_tb",
+      "dut": "divider.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "divider_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/divider_tb.v",
+          "stmt_score": 88.2979,
+          "lines": 93.0,
+          "stmts": 94.0,
+          "branch_score": 88.8889,
+          "cond_score": 50.0,
+          "toggle_score": 41.47
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 97.561,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 95.2381,
+          "cond_score": 100.0,
+          "toggle_score": 92.84
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+        "stmt_score": 97.561,
+        "lines": 41.0,
+        "stmts": 41.0,
+        "branch_score": 95.2381,
+        "cond_score": 100.0,
+        "toggle_score": 92.84
+      }
+    },
+    {
+      "testbench": "icache_tb",
+      "dut": "icache.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "icache_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/icache_tb.v",
+          "stmt_score": 93.7198,
+          "lines": 177.0,
+          "stmts": 207.0,
+          "branch_score": 94.7368,
+          "cond_score": 84.6154,
+          "toggle_score": 12.97
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 98.3607,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 92.3077,
+          "cond_score": 100.0,
+          "toggle_score": 0.79
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+        "stmt_score": 98.3607,
+        "lines": 61.0,
+        "stmts": 61.0,
+        "branch_score": 92.3077,
+        "cond_score": 100.0,
+        "toggle_score": 0.79
+      }
+    },
+    {
+      "testbench": "axi_gpio_tb",
+      "dut": "axi_gpio.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "axi_gpio_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/axi_gpio_tb.v",
+          "stmt_score": 94.3038,
+          "lines": 138.0,
+          "stmts": 158.0,
+          "branch_score": 88.8889,
+          "cond_score": 33.3333,
+          "toggle_score": 24.85
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 100.0,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 33.45
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+        "stmt_score": 100.0,
+        "lines": 54.0,
+        "stmts": 59.0,
+        "branch_score": 100.0,
+        "cond_score": 0.0,
+        "toggle_score": 33.45
+      }
+    },
+    {
+      "testbench": "axi_timer_tb",
+      "dut": "axi_timer.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "axi_timer_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/axi_timer_tb.v",
+          "stmt_score": 93.7143,
+          "lines": 165.0,
+          "stmts": 175.0,
+          "branch_score": 90.9091,
+          "cond_score": 40.0,
+          "toggle_score": 30.66
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 100.0,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 90.9091,
+          "cond_score": 0.0,
+          "toggle_score": 27.85
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+        "stmt_score": 100.0,
+        "lines": 63.0,
+        "stmts": 80.0,
+        "branch_score": 90.9091,
+        "cond_score": 0.0,
+        "toggle_score": 27.85
+      }
+    },
+    {
+      "testbench": "axi_uart_lite_tb",
+      "dut": "axi_uart_lite.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "axi_uart_lite_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/axi_uart_lite_tb.v",
+          "stmt_score": 92.2414,
+          "lines": 218.0,
+          "stmts": 232.0,
+          "branch_score": 88.8889,
+          "cond_score": 47.0588,
+          "toggle_score": 17.56
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 100.0,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 95.8333,
+          "cond_score": 100.0,
+          "toggle_score": 42.37
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+        "stmt_score": 100.0,
+        "lines": 119.0,
+        "stmts": 119.0,
+        "branch_score": 95.8333,
+        "cond_score": 100.0,
+        "toggle_score": 42.37
+      }
+    },
+    {
+      "testbench": "axi_interconnect_tb",
+      "dut": "axi_interconnect.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "axi_interconnect_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/axi_interconnect_tb.v",
+          "stmt_score": 96.6038,
+          "lines": 219.0,
+          "stmts": 265.0,
+          "branch_score": 97.0588,
+          "cond_score": 42.8571,
+          "toggle_score": 33.5
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 100.0,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 23.02
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+        "stmt_score": 100.0,
+        "lines": 71.0,
+        "stmts": 71.0,
+        "branch_score": 100.0,
+        "cond_score": 100.0,
+        "toggle_score": 23.02
+      }
+    },
+    {
+      "testbench": "cpu_tb",
+      "dut": "cpu_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "cpu_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sim_1/imports/new/cpu_tb.v",
+          "stmt_score": 97.3485,
+          "lines": 258.0,
+          "stmts": 264.0,
+          "branch_score": 95.0,
+          "cond_score": 50.0,
+          "toggle_score": 14.88
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 75.99
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 100.0,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 98.1132,
+          "cond_score": 100.0,
+          "toggle_score": 52.91
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 95.2381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 76.4706,
+          "cond_score": 0.0,
+          "toggle_score": 1.57
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 97.2789,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 93.75,
+          "cond_score": 0.0,
+          "toggle_score": 75.16
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 93.1034,
+          "lines": 29.0,
+          "stmts": 29.0,
+          "branch_score": 83.3333,
+          "cond_score": 91.6667,
+          "toggle_score": 100.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 71.4286,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 57.1429,
+          "cond_score": 33.3333,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 90.37
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 97.561,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 95.2381,
+          "cond_score": 100.0,
+          "toggle_score": 66.21
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 62.069,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 52.5,
+          "cond_score": 71.4286,
+          "toggle_score": 17.07
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 98.3607,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 88.4615,
+          "cond_score": 100.0,
+          "toggle_score": 1.34
+        },
+        "rv32i_sva.sv": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/rv32i_sva.sv",
+          "stmt_score": 58.0645,
+          "lines": 58.0,
+          "stmts": 62.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 13.13
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 87.4126,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 57.1429,
+          "cond_score": 33.3333,
+          "toggle_score": 96.15
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 100.0,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 100.0
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 93.2432,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 81.3953,
+          "cond_score": 100.0,
+          "toggle_score": 70.0
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+        "stmt_score": 0.0,
+        "lines": 0.0,
+        "stmts": 0.0,
+        "branch_score": 0.0,
+        "cond_score": 0.0,
+        "toggle_score": 75.99
+      }
+    },
+    {
+      "testbench": "soc_tb",
+      "dut": "soc_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "soc_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/soc_tb.v",
+          "stmt_score": 87.1429,
+          "lines": 67.0,
+          "stmts": 70.0,
+          "branch_score": 50.0,
+          "cond_score": 33.3333,
+          "toggle_score": 4.06
+        },
+        "soc_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+          "stmt_score": 98.2759,
+          "lines": 54.0,
+          "stmts": 58.0,
+          "branch_score": 77.2727,
+          "cond_score": 0.0,
+          "toggle_score": 20.48
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 30.11
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 86.1111,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 71.6981,
+          "cond_score": 73.913,
+          "toggle_score": 18.03
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 52.381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 23.5294,
+          "cond_score": 0.0,
+          "toggle_score": 0.22
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 85.7143,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 81.25,
+          "cond_score": 0.0,
+          "toggle_score": 27.04
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 75.8621,
+          "lines": 29.0,
+          "stmts": 29.0,
+          "branch_score": 50.0,
+          "cond_score": 25.0,
+          "toggle_score": 50.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 28.5714,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 14.2857,
+          "cond_score": 33.3333,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 66.6667,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 60.0,
+          "cond_score": 0.0,
+          "toggle_score": 21.77
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 51.2195,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 33.3333,
+          "cond_score": 28.5714,
+          "toggle_score": 23.24
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 44.8276,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 27.5,
+          "cond_score": 0.0,
+          "toggle_score": 2.2
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 90.1639,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 76.9231,
+          "cond_score": 100.0,
+          "toggle_score": 0.65
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 94.3662,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 87.2549,
+          "cond_score": 70.4918,
+          "toggle_score": 34.61
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 62.1849,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 45.8333,
+          "cond_score": 0.0,
+          "toggle_score": 12.68
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 81.3559,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 55.1724,
+          "cond_score": 0.0,
+          "toggle_score": 12.33
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 41.25,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 20.0,
+          "cond_score": 0.0,
+          "toggle_score": 5.55
+        },
+        "rv32i_sva.sv": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/rv32i_sva.sv",
+          "stmt_score": 51.6129,
+          "lines": 58.0,
+          "stmts": 62.0,
+          "branch_score": 76.4706,
+          "cond_score": 70.0,
+          "toggle_score": 3.79
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 48.2517,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 19.0476,
+          "cond_score": 33.3333,
+          "toggle_score": 50.0
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 87.5,
+          "cond_score": 80.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 71.4286,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 66.6667,
+          "cond_score": 0.0,
+          "toggle_score": 43.75
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 78.3784,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 55.814,
+          "cond_score": 100.0,
+          "toggle_score": 21.38
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+        "stmt_score": 98.2759,
+        "lines": 54.0,
+        "stmts": 58.0,
+        "branch_score": 77.2727,
+        "cond_score": 0.0,
+        "toggle_score": 20.48
+      }
+    },
+    {
+      "testbench": "axi_stress_tb",
+      "dut": "axi_interconnect.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "axi_stress_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/axi_stress_tb.v",
+          "stmt_score": 90.7407,
+          "lines": 213.0,
+          "stmts": 270.0,
+          "branch_score": 72.2222,
+          "cond_score": 47.8261,
+          "toggle_score": 22.07
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 90.1408,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 52.9412,
+          "cond_score": 26.2295,
+          "toggle_score": 13.89
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+        "stmt_score": 90.1408,
+        "lines": 71.0,
+        "stmts": 71.0,
+        "branch_score": 52.9412,
+        "cond_score": 26.2295,
+        "toggle_score": 13.89
+      }
+    },
+    {
+      "testbench": "uart_divisor434_tb",
+      "dut": "axi_uart_lite.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "uart_divisor434_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/uart_divisor434_tb.v",
+          "stmt_score": 87.069,
+          "lines": 108.0,
+          "stmts": 116.0,
+          "branch_score": 55.5556,
+          "cond_score": 0.0,
+          "toggle_score": 13.25
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 98.3193,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 85.4167,
+          "cond_score": 100.0,
+          "toggle_score": 26.62
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+        "stmt_score": 98.3193,
+        "lines": 119.0,
+        "stmts": 119.0,
+        "branch_score": 85.4167,
+        "cond_score": 100.0,
+        "toggle_score": 26.62
+      }
+    },
+    {
+      "testbench": "soc_isa_tb",
+      "dut": "soc_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "soc_isa_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/soc_isa_tb.v",
+          "stmt_score": 96.6667,
+          "lines": 27.0,
+          "stmts": 30.0,
+          "branch_score": 50.0,
+          "cond_score": 33.3333,
+          "toggle_score": 8.82
+        },
+        "soc_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+          "stmt_score": 70.6897,
+          "lines": 54.0,
+          "stmts": 58.0,
+          "branch_score": 68.1818,
+          "cond_score": 0.0,
+          "toggle_score": 20.73
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 65.2
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 100.0,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 92.4528,
+          "cond_score": 82.6087,
+          "toggle_score": 48.78
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 90.4762,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 64.7059,
+          "cond_score": 0.0,
+          "toggle_score": 10.23
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 83.6735,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 87.5,
+          "cond_score": 0.0,
+          "toggle_score": 69.83
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 82.7586,
+          "lines": 29.0,
+          "stmts": 29.0,
+          "branch_score": 66.6667,
+          "cond_score": 8.33333,
+          "toggle_score": 60.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 92.8571,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 92.8571,
+          "cond_score": 100.0,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 90.37
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 97.561,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 95.2381,
+          "cond_score": 100.0,
+          "toggle_score": 75.4
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 48.2759,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 32.5,
+          "cond_score": 0.0,
+          "toggle_score": 6.16
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 95.082,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 84.6154,
+          "cond_score": 100.0,
+          "toggle_score": 25.91
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 83.0986,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 67.6471,
+          "cond_score": 22.9508,
+          "toggle_score": 7.69
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 43.6975,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 29.1667,
+          "cond_score": 0.0,
+          "toggle_score": 1.24
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 55.9322,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 31.0345,
+          "cond_score": 0.0,
+          "toggle_score": 0.97
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 35.0,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 14.5455,
+          "cond_score": 0.0,
+          "toggle_score": 5.55
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 55.9441,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 42.8571,
+          "cond_score": 33.3333,
+          "toggle_score": 69.23
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 100.0,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 100.0
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 60.8108,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 48.8372,
+          "cond_score": 66.6667,
+          "toggle_score": 26.38
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+        "stmt_score": 70.6897,
+        "lines": 54.0,
+        "stmts": 58.0,
+        "branch_score": 68.1818,
+        "cond_score": 0.0,
+        "toggle_score": 20.73
+      }
+    },
+    {
+      "testbench": "soc_random_tb",
+      "dut": "soc_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "soc_random_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/soc_random_tb.v",
+          "stmt_score": 67.1875,
+          "lines": 170.0,
+          "stmts": 192.0,
+          "branch_score": 50.0,
+          "cond_score": 33.3333,
+          "toggle_score": 1.85
+        },
+        "soc_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+          "stmt_score": 53.4483,
+          "lines": 54.0,
+          "stmts": 58.0,
+          "branch_score": 40.9091,
+          "cond_score": 0.0,
+          "toggle_score": 11.99
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 62.57
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 97.2222,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 83.0189,
+          "cond_score": 69.5652,
+          "toggle_score": 47.2
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 52.381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 23.5294,
+          "cond_score": 0.0,
+          "toggle_score": 0.49
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 80.9524,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 81.25,
+          "cond_score": 0.0,
+          "toggle_score": 68.19
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 79.3103,
+          "lines": 29.0,
+          "stmts": 29.0,
+          "branch_score": 50.0,
+          "cond_score": 8.33333,
+          "toggle_score": 50.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 92.8571,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 92.8571,
+          "cond_score": 100.0,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 90.37
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 95.1219,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 85.7143,
+          "cond_score": 100.0,
+          "toggle_score": 97.83
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 48.2759,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 32.5,
+          "cond_score": 0.0,
+          "toggle_score": 5.72
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 90.1639,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 76.9231,
+          "cond_score": 100.0,
+          "toggle_score": 10.19
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 81.6901,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 65.6863,
+          "cond_score": 19.6721,
+          "toggle_score": 3.84
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 43.6975,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 29.1667,
+          "cond_score": 0.0,
+          "toggle_score": 0.49
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 55.9322,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 31.0345,
+          "cond_score": 0.0,
+          "toggle_score": 0.0
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 35.0,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 14.5455,
+          "cond_score": 0.0,
+          "toggle_score": 4.91
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 46.8531,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 54.7619,
+          "cond_score": 33.3333,
+          "toggle_score": 50.0
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 57.1429,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 50.0,
+          "cond_score": 0.0,
+          "toggle_score": 100.0
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 36.4865,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 27.907,
+          "cond_score": 33.3333,
+          "toggle_score": 20.0
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+        "stmt_score": 53.4483,
+        "lines": 54.0,
+        "stmts": 58.0,
+        "branch_score": 40.9091,
+        "cond_score": 0.0,
+        "toggle_score": 11.99
+      }
+    },
+    {
+      "testbench": "soc_interrupt_tb",
+      "dut": "soc_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "soc_interrupt_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/soc_interrupt_tb.v",
+          "stmt_score": 87.931,
+          "lines": 55.0,
+          "stmts": 58.0,
+          "branch_score": 50.0,
+          "cond_score": 60.0,
+          "toggle_score": 2.21
+        },
+        "soc_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+          "stmt_score": 53.4483,
+          "lines": 54.0,
+          "stmts": 58.0,
+          "branch_score": 40.9091,
+          "cond_score": 0.0,
+          "toggle_score": 11.4
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 45.02
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 91.6667,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 88.6792,
+          "cond_score": 91.3044,
+          "toggle_score": 31.22
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 95.2381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 82.3529,
+          "cond_score": 0.0,
+          "toggle_score": 0.48
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 88.4354,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 87.5,
+          "cond_score": 0.0,
+          "toggle_score": 43.11
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 75.8621,
+          "lines": 29.0,
+          "stmts": 29.0,
+          "branch_score": 66.6667,
+          "cond_score": 16.6667,
+          "toggle_score": 60.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 35.7143,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 21.4286,
+          "cond_score": 33.3333,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 66.6667,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 60.0,
+          "cond_score": 0.0,
+          "toggle_score": 33.67
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 51.2195,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 33.3333,
+          "cond_score": 28.5714,
+          "toggle_score": 28.37
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 67.2414,
+          "lines": 58.0,
+          "stmts": 58.0,
+          "branch_score": 50.0,
+          "cond_score": 14.2857,
+          "toggle_score": 5.5
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 95.082,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 84.6154,
+          "cond_score": 100.0,
+          "toggle_score": 0.76
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 81.6901,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 65.6863,
+          "cond_score": 19.6721,
+          "toggle_score": 3.84
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 43.6975,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 29.1667,
+          "cond_score": 0.0,
+          "toggle_score": 0.49
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 55.9322,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 31.0345,
+          "cond_score": 0.0,
+          "toggle_score": 0.0
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 35.0,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 14.5455,
+          "cond_score": 0.0,
+          "toggle_score": 3.2
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 41.2587,
+          "lines": 143.0,
+          "stmts": 143.0,
+          "branch_score": 16.6667,
+          "cond_score": 33.3333,
+          "toggle_score": 65.38
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 85.7143,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 83.3333,
+          "cond_score": 0.0,
+          "toggle_score": 100.0
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 33.7838,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 20.9302,
+          "cond_score": 33.3333,
+          "toggle_score": 8.33
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+        "stmt_score": 53.4483,
+        "lines": 54.0,
+        "stmts": 58.0,
+        "branch_score": 40.9091,
+        "cond_score": 0.0,
+        "toggle_score": 11.4
+      }
+    },
+    {
+      "testbench": "soc_firmware_tb",
+      "dut": "soc_top.v",
+      "all_stats": {
+        "File Path": {
+          "filepath": "File Path",
+          "stmt_score": "Statement Coverage Score",
+          "lines": "Lines Count",
+          "stmts": "Statements Count",
+          "branch_score": "Branch Coverage Score",
+          "cond_score": "Condition Coverage Score",
+          "toggle_score": "Toggle Coverage Score"
+        },
+        "soc_firmware_tb.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sim_1/new/soc_firmware_tb.v",
+          "stmt_score": 95.4545,
+          "lines": 65.0,
+          "stmts": 66.0,
+          "branch_score": 72.7273,
+          "cond_score": 33.3333,
+          "toggle_score": 8.44
+        },
+        "soc_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+          "stmt_score": 74.1379,
+          "lines": 54.0,
+          "stmts": 58.0,
+          "branch_score": 77.2727,
+          "cond_score": 0.0,
+          "toggle_score": 46.15
+        },
+        "cpu_top.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/cpu_top.v",
+          "stmt_score": 0.0,
+          "lines": 0.0,
+          "stmts": 0.0,
+          "branch_score": 0.0,
+          "cond_score": 0.0,
+          "toggle_score": 74.56
+        },
+        "datapath.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/datapath.v",
+          "stmt_score": 97.2222,
+          "lines": 36.0,
+          "stmts": 36.0,
+          "branch_score": 92.1569,
+          "cond_score": 95.6522,
+          "toggle_score": 51.19
+        },
+        "branch_predictor.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_predictor.v",
+          "stmt_score": 95.2381,
+          "lines": 21.0,
+          "stmts": 21.0,
+          "branch_score": 94.1176,
+          "cond_score": 0.0,
+          "toggle_score": 1.55
+        },
+        "pipeline_registers.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/pipeline_registers.v",
+          "stmt_score": 97.2789,
+          "lines": 147.0,
+          "stmts": 147.0,
+          "branch_score": 93.75,
+          "cond_score": 0.0,
+          "toggle_score": 65.9
+        },
+        "hazard_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/hazard_unit.v",
+          "stmt_score": 100.0,
+          "lines": 25.0,
+          "stmts": 25.0,
+          "branch_score": 100.0,
+          "cond_score": 33.3333,
+          "toggle_score": 80.0
+        },
+        "alu.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/alu.v",
+          "stmt_score": 50.0,
+          "lines": 14.0,
+          "stmts": 14.0,
+          "branch_score": 35.7143,
+          "cond_score": 33.3333,
+          "toggle_score": 3.03
+        },
+        "multiplier.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/multiplier.v",
+          "stmt_score": 83.3333,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 80.0,
+          "cond_score": 0.0,
+          "toggle_score": 88.35
+        },
+        "divider.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/divider.v",
+          "stmt_score": 95.1219,
+          "lines": 41.0,
+          "stmts": 41.0,
+          "branch_score": 76.1905,
+          "cond_score": 100.0,
+          "toggle_score": 66.48
+        },
+        "csr_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/csr_file.v",
+          "stmt_score": 45.8333,
+          "lines": 48.0,
+          "stmts": 48.0,
+          "branch_score": 27.7778,
+          "cond_score": 0.0,
+          "toggle_score": 6.01
+        },
+        "icache.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/icache.v",
+          "stmt_score": 95.082,
+          "lines": 61.0,
+          "stmts": 61.0,
+          "branch_score": 84.6154,
+          "cond_score": 100.0,
+          "toggle_score": 1.17
+        },
+        "axi_interconnect.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_interconnect.v",
+          "stmt_score": 94.3662,
+          "lines": 71.0,
+          "stmts": 71.0,
+          "branch_score": 89.1089,
+          "cond_score": 80.3279,
+          "toggle_score": 44.0
+        },
+        "axi_uart_lite.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_uart_lite.v",
+          "stmt_score": 76.4706,
+          "lines": 119.0,
+          "stmts": 119.0,
+          "branch_score": 60.4167,
+          "cond_score": 50.0,
+          "toggle_score": 19.65
+        },
+        "axi_gpio.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_gpio.v",
+          "stmt_score": 81.3559,
+          "lines": 54.0,
+          "stmts": 59.0,
+          "branch_score": 55.1724,
+          "cond_score": 0.0,
+          "toggle_score": 10.71
+        },
+        "axi_timer.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_timer.v",
+          "stmt_score": 41.25,
+          "lines": 63.0,
+          "stmts": 80.0,
+          "branch_score": 20.0,
+          "cond_score": 0.0,
+          "toggle_score": 10.04
+        },
+        "control_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/control_unit.v",
+          "stmt_score": 63.7681,
+          "lines": 138.0,
+          "stmts": 138.0,
+          "branch_score": 29.2683,
+          "cond_score": 0.0,
+          "toggle_score": 84.0
+        },
+        "register_file.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/register_file.v",
+          "stmt_score": 100.0,
+          "lines": 6.0,
+          "stmts": 6.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        },
+        "imm_gen.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/imm_gen.v",
+          "stmt_score": 100.0,
+          "lines": 7.0,
+          "stmts": 7.0,
+          "branch_score": 100.0,
+          "cond_score": 0.0,
+          "toggle_score": 100.0
+        },
+        "forwarding_unit.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/cpu_pipeline.srcs/sources_1/imports/new/forwarding_unit.v",
+          "stmt_score": 100.0,
+          "lines": 10.0,
+          "stmts": 10.0,
+          "branch_score": 100.0,
+          "cond_score": 100.0,
+          "toggle_score": 100.0
+        },
+        "axi_lite_master_d.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/axi_lite_master_d.v",
+          "stmt_score": 87.8378,
+          "lines": 71.0,
+          "stmts": 74.0,
+          "branch_score": 67.4419,
+          "cond_score": 100.0,
+          "toggle_score": 63.88
+        },
+        "branch_comp.v": {
+          "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/branch_comp.v",
+          "stmt_score": 100.0,
+          "lines": 3.0,
+          "stmts": 3.0,
+          "branch_score": 0.0,
+          "cond_score": 100.0,
+          "toggle_score": 0.0
+        }
+      },
+      "dut_stats": {
+        "filepath": "C:/Users/BuiThanhQui/CPU-pineline/vivado/vivado.srcs/sources_1/new/soc_top.v",
+        "stmt_score": 74.1379,
+        "lines": 54.0,
+        "stmts": 58.0,
+        "branch_score": 77.2727,
+        "cond_score": 0.0,
+        "toggle_score": 46.15
+      }
+    }
+  ],
+  "modules": [
+    {
+      "module": "alu.v",
+      "best_tb": "alu_tb",
+      "stmt": 100.0,
+      "branch": 85.7143,
+      "cond": 33.3333,
+      "toggle": 65.5
+    },
+    {
+      "module": "axi_gpio.v",
+      "best_tb": "axi_gpio_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 0.0,
+      "toggle": 33.45
+    },
+    {
+      "module": "axi_interconnect.v",
+      "best_tb": "axi_interconnect_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 100.0,
+      "toggle": 23.02
+    },
+    {
+      "module": "axi_lite_master_d.v",
+      "best_tb": "cpu_tb",
+      "stmt": 93.2432,
+      "branch": 81.3953,
+      "cond": 100.0,
+      "toggle": 70.0
+    },
+    {
+      "module": "axi_timer.v",
+      "best_tb": "axi_timer_tb",
+      "stmt": 100.0,
+      "branch": 90.9091,
+      "cond": 0.0,
+      "toggle": 27.85
+    },
+    {
+      "module": "axi_uart_lite.v",
+      "best_tb": "axi_uart_lite_tb",
+      "stmt": 100.0,
+      "branch": 95.8333,
+      "cond": 100.0,
+      "toggle": 42.37
+    },
+    {
+      "module": "branch_comp.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 0.0,
+      "cond": 100.0,
+      "toggle": 0.0
+    },
+    {
+      "module": "branch_predictor.v",
+      "best_tb": "soc_firmware_tb",
+      "stmt": 95.2381,
+      "branch": 94.1176,
+      "cond": 0.0,
+      "toggle": 1.55
+    },
+    {
+      "module": "control_unit.v",
+      "best_tb": "control_unit_tb",
+      "stmt": 98.6014,
+      "branch": 92.8571,
+      "cond": 100.0,
+      "toggle": 89.09
+    },
+    {
+      "module": "cpu_top.v",
+      "best_tb": "cpu_tb",
+      "stmt": 0.0,
+      "branch": 0.0,
+      "cond": 0.0,
+      "toggle": 75.99
+    },
+    {
+      "module": "csr_file.v",
+      "best_tb": "csr_file_tb",
+      "stmt": 94.8276,
+      "branch": 92.5,
+      "cond": 100.0,
+      "toggle": 21.62
+    },
+    {
+      "module": "datapath.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 98.1132,
+      "cond": 100.0,
+      "toggle": 52.91
+    },
+    {
+      "module": "divider.v",
+      "best_tb": "divider_tb",
+      "stmt": 97.561,
+      "branch": 95.2381,
+      "cond": 100.0,
+      "toggle": 92.84
+    },
+    {
+      "module": "forwarding_unit.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 100.0,
+      "toggle": 100.0
+    },
+    {
+      "module": "hazard_unit.v",
+      "best_tb": "soc_firmware_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 33.3333,
+      "toggle": 80.0
+    },
+    {
+      "module": "icache.v",
+      "best_tb": "icache_tb",
+      "stmt": 98.3607,
+      "branch": 92.3077,
+      "cond": 100.0,
+      "toggle": 0.79
+    },
+    {
+      "module": "imm_gen.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 0.0,
+      "toggle": 100.0
+    },
+    {
+      "module": "multiplier.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 0.0,
+      "toggle": 90.37
+    },
+    {
+      "module": "pipeline_registers.v",
+      "best_tb": "cpu_tb",
+      "stmt": 97.2789,
+      "branch": 93.75,
+      "cond": 0.0,
+      "toggle": 75.16
+    },
+    {
+      "module": "register_file.v",
+      "best_tb": "cpu_tb",
+      "stmt": 100.0,
+      "branch": 100.0,
+      "cond": 100.0,
+      "toggle": 0.0
+    },
+    {
+      "module": "soc_top.v",
+      "best_tb": "soc_tb",
+      "stmt": 98.2759,
+      "branch": 77.2727,
+      "cond": 0.0,
+      "toggle": 20.48
+    }
+  ]
+}

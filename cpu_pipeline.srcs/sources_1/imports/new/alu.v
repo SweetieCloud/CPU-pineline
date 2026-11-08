@@ -1,65 +1,70 @@
 `timescale 1ns / 1ps
+`include "defines.vh"
 
-module alu (
-    input signed [15:0] A,
-    input signed [15:0] B,
-    input [4:0] ALUOp,
-    output reg [15:0] Result,
-    output reg [31:0] HILO_Out, 
-    
-    // Status Flags
-    output wire Zero,
-    output wire Negative,
-    output reg Overflow
+module alu #(
+    parameter DATA_WIDTH = 32
+)(
+    input  wire [DATA_WIDTH-1:0] i_in_a,    // To�n h?ng A (RS1 ho?c PC)
+    input  wire [DATA_WIDTH-1:0] i_in_b,    // To�n h?ng B (RS2 ho?c Immediate)
+    input  wire [3:0]            i_alu_op,  // T�n hi?u ?i?u khi?n t? Decoder
+
+    output reg  [DATA_WIDTH-1:0] o_result,  // K?t qu? t�nh to�n 32-bit
+    output wire                  o_zero     // C? Zero (True n?u Result == 0)
 );
 
-    // =========================================================================
-    // FLAGS ASSIGNMENT
-    // =========================================================================
-    assign Zero = (Result == 16'b0);
-    assign Negative = Result[15]; // L?y bit d?u (MSB)
+    // C? Zero d�ng cho ki?m tra k?t qu?
+    assign o_zero = (o_result == {DATA_WIDTH{1'b0}});
 
-    // =========================================================================
-    // ALU OPERATIONS
-    // =========================================================================
-    always @(*) begin 
-        Overflow = 0;
-        HILO_Out = 32'b0;
-        Result   = 16'b0;
+    always @(*) begin
+        case (i_alu_op)
+            `ALU_ADD: begin
+                o_result = i_in_a + i_in_b;
+            end
 
-        case(ALUOp)
-            5'b00001: begin // OP_ADD (C?ng có d?u)
-                Result = A + B; 
-                if ((A[15] == B[15]) && (Result[15] != A[15])) Overflow = 1;
+            `ALU_SUB: begin
+                o_result = i_in_a - i_in_b;
             end
-            5'b00010: Result = A + B; // OP_ADDU 
-            
-            5'b00011: begin // OP_SUB  
-                Result = A - B; 
-                if ((A[15] != B[15]) && (Result[15] != A[15])) Overflow = 1;
+
+            `ALU_SLL: begin // Shift Left Logical
+                o_result = i_in_a << i_in_b[4:0];
             end
-            5'b00100: Result = A - B; // OP_SUBU
-            
-            // Logic Operations
-            5'b00101: Result = A & B; // OP_AND
-            5'b00110: Result = A | B; // OP_OR
-            5'b00111: Result = ~(A | B); // OP_NOR
-            5'b01000: Result = A ^ B; // OP_XOR
-            
-            // Set on Less Than
-            5'b01001: Result = (A < B) ? 16'd1 : 16'd0; // OP_SLT  
-            5'b01010: Result = ($unsigned(A) < $unsigned(B)) ? 16'd1 : 16'd0; // OP_SLTU
-            5'b01011: Result = (A == B) ? 16'd1 : 16'd0; // OP_SEQ
-            
-            // Shifter Operations
-            5'b01100: Result = A >> B[3:0]; // OP_SHR (Logic)
-            5'b01101: Result = A << B[3:0]; // OP_SHL
-            
-            // Math
-            5'b10000: HILO_Out = A * B; // OP_MULT
-            5'b10100: Result = A + B; // OP_ADDR_CALC (Base + Offset)
-            
-            default: Result = 16'b0;
+
+            `ALU_SLT: begin // Set Less Than (Signed)
+                o_result = ($signed(i_in_a) < $signed(i_in_b)) ? 32'd1 : 32'd0;
+            end
+
+            `ALU_SLTU: begin // Set Less Than (Unsigned)
+                o_result = (i_in_a < i_in_b) ? 32'd1 : 32'd0;
+            end
+
+            `ALU_XOR: begin
+                o_result = i_in_a ^ i_in_b;
+            end
+
+            `ALU_SRL: begin // Shift Right Logical
+                o_result = i_in_a >> i_in_b[4:0];
+            end
+
+            `ALU_SRA: begin // Shift Right Arithmetic (D?ch gi? d?u)
+                o_result = $signed(i_in_a) >>> i_in_b[4:0];
+            end
+
+            `ALU_OR: begin
+                o_result = i_in_a | i_in_b;
+            end
+
+            `ALU_AND: begin
+                o_result = i_in_a & i_in_b;
+            end
+
+            `ALU_COPY_B: begin // D�ng cho l?nh LUI (L?y tr?c ti?p Immediate)
+                o_result = i_in_b;
+            end
+
+            default: begin
+                o_result = {DATA_WIDTH{1'b0}};
+            end
         endcase
     end
+
 endmodule

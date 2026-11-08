@@ -1,96 +1,86 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
- 
-// Module Name: regfile_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
-`timescale 1ns / 1ps
+`include "defines.vh"
 
 module regfile_tb;
 
-    // Inputs
-    reg clk, rst, ce;
-    reg [2:0] ReadAddr_rs, ReadAddr_rt, WriteAddr;
-    reg WriteEn;
-    reg [15:0] WriteData;
-    
-    reg HILO_WriteEn, MTSR_WriteEn, MFSR_ReadEn;
-    reg [15:0] HI_in, LO_in, Data_MTSR;
-    reg [2:0] Funct_MTSR, Funct_MFSR;
+    reg         clk;
+    reg         rst_n;
+    reg  [4:0]  rs1_addr;
+    reg  [4:0]  rs2_addr;
+    reg         reg_write;
+    reg  [4:0]  rd_addr;
+    reg  [31:0] rd_data;
 
-    // Outputs
-    wire [15:0] ReadData_rs, ReadData_rt, ReadData_MFSR;
+    wire [31:0] rs1_data;
+    wire [31:0] rs2_data;
 
-    // Instantiate Register File
+    // Instantiate Register File RV32I
     register_file uut (
-        .clk(clk), .rst(rst), .ce(ce),
-        .ReadAddr_rs(ReadAddr_rs), .ReadAddr_rt(ReadAddr_rt),
-        .ReadData_rs(ReadData_rs), .ReadData_rt(ReadData_rt),
-        .WriteEn(WriteEn), .WriteAddr(WriteAddr), .WriteData(WriteData),
-        .HILO_WriteEn(HILO_WriteEn), .HI_in(HI_in), .LO_in(LO_in),
-        .MTSR_WriteEn(MTSR_WriteEn), .Funct_MTSR(Funct_MTSR), .Data_MTSR(Data_MTSR),
-        .MFSR_ReadEn(MFSR_ReadEn), .Funct_MFSR(Funct_MFSR), .ReadData_MFSR(ReadData_MFSR)
+        .i_clk       (clk),
+        .i_rst_n     (rst_n),
+        .i_rs1_addr  (rs1_addr),
+        .o_rs1_data  (rs1_data),
+        .i_rs2_addr  (rs2_addr),
+        .o_rs2_data  (rs2_data),
+        .i_reg_write (reg_write),
+        .i_rd_addr   (rd_addr),
+        .i_rd_data   (rd_data)
     );
 
-    // Clock gen
-    initial begin clk = 0; forever #5 clk = ~clk; end
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
 
     integer errors = 0;
 
     initial begin
-        $display("\n=== STARTING REGISTER FILE UNIT TEST ===");
-         
-        rst = 1; ce = 1; WriteEn = 0; HILO_WriteEn = 0; MTSR_WriteEn = 0; MFSR_ReadEn = 0;
-        #15; rst = 0;
-  
-        WriteAddr = 0; WriteData = 16'd9999; WriteEn = 1;
-        #10;
-        WriteEn = 0; ReadAddr_rs = 0;
-        #1; // ??i combinational logic
-        if (ReadData_rs !== 16'd0) begin $display("[FAIL] Zero Register written!"); errors = errors + 1; end
-        else $display("[PASS] Zero Register Protection");
- 
-        ce = 0; WriteAddr = 1; WriteData = 16'hAAAA; WriteEn = 1;
-        #10;
-        ce = 1; WriteEn = 0; ReadAddr_rs = 1;
-        #1;
-        if (ReadData_rs === 16'hAAAA) begin $display("[FAIL] CE bypassed!"); errors = errors + 1; end
-        else $display("[PASS] Clock Enable Protection");
- 
-        ce = 1; WriteAddr = 2; WriteData = 16'h5555; WriteEn = 1;
-        #10;
-        WriteEn = 0; ReadAddr_rt = 2;
-        #1;
-        if (ReadData_rt !== 16'h5555) begin $display("[FAIL] Normal Read/Write"); errors = errors + 1; end
-        else $display("[PASS] Normal Read/Write ($2 = 5555)");
- 
-        HILO_WriteEn = 1; HI_in = 16'hBEEF; LO_in = 16'hDEAD;
-        #10;
-        HILO_WriteEn = 0; MFSR_ReadEn = 1; Funct_MFSR = 3'b100; // ??c HI
-        #1;
-        if (ReadData_MFSR !== 16'hBEEF) begin $display("[FAIL] HI Register Read/Write"); errors = errors + 1; end
-        else $display("[PASS] HI Register Checked");
- 
-        MTSR_WriteEn = 1; Funct_MTSR = 3'b010; Data_MTSR = 16'h1234; // Ghi RA
-        #10;
-        MTSR_WriteEn = 0; MFSR_ReadEn = 1; Funct_MFSR = 3'b010; // ??c RA
-        #1;
-        if (ReadData_MFSR !== 16'h1234) begin $display("[FAIL] MTSR/MFSR for RA"); errors = errors + 1; end
-        else $display("[PASS] Special Regs MTSR/MFSR Checked");
+        $display("\n=== STARTING RV32I REGISTER FILE 32-BIT UNIT TEST ===");
 
-        $display("=== REG FILE UNIT TEST DONE. ERRORS: %0d ===\n", errors);
-        $stop;
+        rst_n = 0; reg_write = 0; rs1_addr = 0; rs2_addr = 0; rd_addr = 0; rd_data = 0;
+        #15;
+        rst_n = 1;
+        #10;
+
+        // Test 1: Hardwired Zero Register x0
+        rd_addr = 5'd0; rd_data = 32'hDEADBEEF; reg_write = 1;
+        #10;
+        reg_write = 0; rs1_addr = 5'd0;
+        #1;
+        if (rs1_data !== 32'd0) begin
+            $display("[FAIL] x0 written with value 0x%08H!", rs1_data); errors = errors + 1;
+        end else $display("[PASS] Register x0 Hardwired Protection: x0 == 0");
+
+        // Test 2: Normal Write & Read
+        rd_addr = 5'd1; rd_data = 32'hA5A55A5A; reg_write = 1;
+        #10;
+        reg_write = 0; rs1_addr = 5'd1;
+        #1;
+        if (rs1_data !== 32'hA5A55A5A) begin
+            $display("[FAIL] Normal Read/Write: x1 = 0x%08H", rs1_data); errors = errors + 1;
+        end else $display("[PASS] Normal Read/Write: x1 = 0xA5A55A5A");
+
+        // Test 3: Internal Forwarding / Write-Through (Read and Write in same cycle)
+        rd_addr = 5'd2; rd_data = 32'h12345678; reg_write = 1; rs1_addr = 5'd2;
+        #1;
+        if (rs1_data !== 32'h12345678) begin
+            $display("[FAIL] Internal Forwarding (Write-Through) Failed! Value: 0x%08H", rs1_data); errors = errors + 1;
+        end else $display("[PASS] Internal Forwarding (Write-Through): Same-cycle Read/Write x2 = 0x12345678");
+
+        #9;
+        reg_write = 0;
+
+        // Test 4: Dual Read Ports (rs1 and rs2 simultaneously)
+        rd_addr = 5'd3; rd_data = 32'hCAFEBABE; reg_write = 1;
+        #10;
+        reg_write = 0; rs1_addr = 5'd1; rs2_addr = 5'd3;
+        #1;
+        if (rs1_data !== 32'hA5A55A5A || rs2_data !== 32'hCAFEBABE) begin
+            $display("[FAIL] Dual Read Ports: rs1=0x%08H, rs2=0x%08H", rs1_data, rs2_data); errors = errors + 1;
+        end else $display("[PASS] Dual Read Ports: rs1(x1) = 0xA5A55A5A, rs2(x3) = 0xCAFEBABE");
+
+        $display("=== REGISTER FILE UNIT TEST DONE. TOTAL ERRORS: %0d ===\n", errors);
+        $finish;
     end
+
 endmodule

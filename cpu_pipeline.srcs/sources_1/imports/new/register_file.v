@@ -1,83 +1,59 @@
-/* * Module: register_file
- */
 `timescale 1ns / 1ps
+`include "defines.vh"
 
-module register_file(
-    input clk, rst,
-    input ce,                 
-    input [2:0] ReadAddr_rs,
-    input [2:0] ReadAddr_rt,
-    output [15:0] ReadData_rs,
-    output [15:0] ReadData_rt,
-    
-    input WriteEn,             
-    input [2:0] WriteAddr,
-    input [15:0] WriteData,
-    
-    input HILO_WriteEn,       
-    input [15:0] HI_in,
-    input [15:0] LO_in,
-    
-    input MTSR_WriteEn,        
-    input [2:0] Funct_MTSR,     
-    input [15:0] Data_MTSR,  
-    
-    input MFSR_ReadEn,        
-    input [2:0] Funct_MFSR,    
-    output reg [15:0] ReadData_MFSR
+module register_file (
+    input  wire                       i_clk,
+    input  wire                       i_rst_n,
+
+    // Cong doc 1 (RS1)
+    input  wire [`REG_ADDR_WIDTH-1:0]  i_rs1_addr,
+    output wire [`DATA_WIDTH-1:0]      o_rs1_data,
+
+    // Cong doc 2 (RS2)
+    input  wire [`REG_ADDR_WIDTH-1:0]  i_rs2_addr,
+    output wire [`DATA_WIDTH-1:0]      o_rs2_data,
+
+    // Cong ghi (RD)
+    input  wire                       i_reg_write,
+    input  wire [`REG_ADDR_WIDTH-1:0]  i_rd_addr,
+    input  wire [`DATA_WIDTH-1:0]      i_rd_data
 );
-  
-    reg [15:0] registers [0:7];
 
-    reg [15:0] HI, LO;
-    reg [15:0] RA, AT;
-    
-    integer i;
+    // Mang 32 thanh ghi 32-bit (x0 - x31)
+    // Khong su dung reset bat dong bo tren mang nho de cho phep Vivado infer RAM32M (Distributed RAM)
+    (* ram_style = "distributed" *) reg [`DATA_WIDTH-1:0] registers [`REG_NUM-1:0];
 
-    // --- 1. WRITE OPERATION ---
-    always @(posedge clk or posedge rst) begin
-        if (rst) begin
-            for (i = 0; i < 8; i = i + 1) registers[i] <= 0;
-            HI <= 0; LO <= 0; RA <= 0; AT <= 0;
-        end
-        else if (ce) begin  
-            if (WriteEn && (WriteAddr != 0)) begin  
-                registers[WriteAddr] <= WriteData;
-            end
-            
-            if (HILO_WriteEn) begin
-                HI <= HI_in;
-                LO <= LO_in;
-            end
-            
-            if (MTSR_WriteEn) begin
-                case (Funct_MTSR)
-                    3'b010: RA <= Data_MTSR; // mtra
-                    3'b011: AT <= Data_MTSR; // mtat
-                    3'b100: HI <= Data_MTSR; // mthi
-                    3'b101: LO <= Data_MTSR; // mtlo
-                endcase
-            end
+    // Khoi tao ban dau cho mo phong (Simulation only)
+`ifndef SYNTHESIS
+    integer k;
+    initial begin
+        for (k = 0; k < `REG_NUM; k = k + 1) begin
+            registers[k] = `DATA_WIDTH'b0;
         end
     end
-    
-    // --- 2. READ OPERATION ---
-    assign ReadData_rs = (ReadAddr_rs == 0) ? 16'h0000 : registers[ReadAddr_rs];
-    assign ReadData_rt = (ReadAddr_rt == 0) ? 16'h0000 : registers[ReadAddr_rt];
-    
-    always @(*) begin
-        if (MFSR_ReadEn) begin
-            case (Funct_MFSR)
-                3'b000: ReadData_MFSR = 16'h0000;
-                3'b001: ReadData_MFSR = 16'h0000;
-                3'b010: ReadData_MFSR = RA;
-                3'b011: ReadData_MFSR = AT;
-                3'b100: ReadData_MFSR = HI;
-                3'b101: ReadData_MFSR = LO;
-                default: ReadData_MFSR = 16'h0000;
-            endcase
-        end else begin
-            ReadData_MFSR = 16'h0000;
+`endif
+
+    // -------------------------------------------------------------------------
+    // 1. Doc bat dong bo tich hop Internal Forwarding (Write-Through)
+    // -------------------------------------------------------------------------
+    // Uu tien 1: Doc x0 -> Luon tra ve 0
+    // Uu tien 2: Dia chi doc trung dia chi ghi o WB stage va co lenh ghi -> Bypass i_rd_data
+    // Uu tien 3: Doc truc tiep tu mang thanh ghi
+    assign o_rs1_data = (i_rs1_addr == 5'b00000) ? `DATA_WIDTH'b0 :
+                        ((i_rs1_addr == i_rd_addr) && i_reg_write) ? i_rd_data :
+                        registers[i_rs1_addr];
+
+    assign o_rs2_data = (i_rs2_addr == 5'b00000) ? `DATA_WIDTH'b0 :
+                        ((i_rs2_addr == i_rd_addr) && i_reg_write) ? i_rd_data :
+                        registers[i_rs2_addr];
+
+    // -------------------------------------------------------------------------
+    // 2. Ghi dong bo theo suon duong xung nhip (Bao ve tuyet doi x0)
+    // -------------------------------------------------------------------------
+    always @(posedge i_clk) begin
+        if (i_reg_write && (i_rd_addr != 5'b00000)) begin
+            registers[i_rd_addr] <= i_rd_data;
         end
     end
+
 endmodule

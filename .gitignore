@@ -1,0 +1,125 @@
+# ==============================================================================
+# XILINX VIVADO & SIMULATION TEMPORARY FILES AND DIRECTORIES
+# ==============================================================================
+
+# Vivado Log, Journal, Protocol Buffer and Dump Files
+*.log
+*.jou
+*.pb
+*.str
+*.os
+*.dmp
+*.wdb
+*.vcd
+*.rlx
+*.sdb
+*.dbg
+*.mem
+*.reloc
+*.rtti
+*.svtype
+*.type
+*.xdbg
+*.ini
+
+# Backup and Crash Files
+*.backup.jou
+*.backup.log
+*crash.log
+*kernel.log
+
+# Vivado Internal Tool Directories
+.Xil/
+*/.Xil/
+xsim.dir/
+*/xsim.dir/
+
+# Vivado Project Generated Run & Cache Directories
+*.cache/
+*/vivado.cache/
+*/cpu_pipeline.cache/
+*.hw/
+*/vivado.hw/
+*/cpu_pipeline.hw/
+*.ip_user_files/
+*/vivado.ip_user_files/
+*/cpu_pipeline.ip_user_files/
+*.runs/
+*/vivado.runs/
+*/cpu_pipeline.runs/
+*.sim/
+*/vivado.sim/
+*/cpu_pipeline.sim/
+
+# Temporary Synthesis / Simulation Check Scripts and Scratch Dumps
+synth_check.tcl
+util_report.txt
+timing_report.txt
+
+# ==============================================================================
+# PYTHON TOOLCHAIN & INTERMEDIATE ARTIFACTS
+# ==============================================================================
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# ==============================================================================
+# C / RISC-V BAREMETAL TOOLCHAIN INTERMEDIATES
+# ==============================================================================
+*.o
+*.obj
+*.elf
+*.bin
+
+# ==============================================================================
+# OS & EDITOR SPECIFIC FILES
+# ==============================================================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*~
+*.bak
+*.swp
+*.swo
+
+# ==============================================================================
+# IMPORTANT EXCEPTIONS (ALWAYS TRACK)
+# ==============================================================================
+!vivado/reports/
+!vivado/reports/*.rpt
+!sw/program.hex
+!vivado/program.hex
+!vivado/soc_top_arty_z7.bit
+
+# ==============================================================================
+# COVERAGE RUN ARTIFACTS & SIMULATION DUMPS
+# ==============================================================================
+coverage/*_tb/
+coverage/*_report/
+coverage/cov/
+coverage/**/cov/
+coverage/**/cov_report/
+coverage/**/xsim.codeCov/
+coverage/**/xsim.dir/
+coverage/temp_*/
+coverage/merged_test/
+coverage/clean_test_dir/
+coverage/xsim.codeCov/
+coverage/multi_seed_trace_run/
+coverage/pipeline_stress_run/
+coverage/*.hex
+coverage/*.s
+coverage/*.tcl
+!coverage/coverage_summary.md
+!coverage/coverage_summary.json
+!coverage/golden_checks.vh
+
+# ==============================================================================
+# SCRATCH & TEMPORARY LOGS / DUMPS
+# ==============================================================================
+scratch/
+vivado/tight_setup_hold_pins.txt
