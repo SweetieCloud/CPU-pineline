@@ -87,16 +87,16 @@ flowchart TD
     end
 
     subgraph SOC_WRAPPER ["soc_top_arty_z7 (Board Top Wrapper)"]
-        MMCM["MMCME2_BASE\n(125MHz to 50MHz Low-Jitter Clock)"]
+        MMCM["MMCME2_BASE<br/>(125MHz to 50MHz Low-Jitter Clock)"]
         SYNC_RST["3-Stage Synchronous Reset Synchronizer"]
     end
 
     subgraph SOC_SYSTEM ["RV32IM Industrial System-on-Chip (soc_top.v)"]
         subgraph CPU_CORE ["CPU Core (cpu_top.v)"]
             CORE_DP["5-Stage RV32IM Datapath"]
-            BP["Dynamic Branch Predictor\n(BHT 64x2b + BTB 64-entry)"]
+            BP["Dynamic Branch Predictor<br/>(BHT 64x2b + BTB 64-entry)"]
             MDU["Hardware M-Extension (12x DSP48E1 MUL + 32-cycle DIV)"]
-            ICACHE["L1 Instruction Cache\n(1024B, 1-cycle Hit Latency)"]
+            ICACHE["L1 Instruction Cache<br/>(1024B, 1-cycle Hit Latency)"]
             AXI_D_M["AXI4-Lite Data Master Controller"]
             CSR["Machine-Mode CSR File (mcycle, minstret, mstatus...)"]
         end
@@ -106,7 +106,7 @@ flowchart TD
         end
 
         subgraph MEMORY ["Memory Subsystem"]
-            BRAM["16KB Dual-Port BRAM (4x RAMB36E1)\n(Port A: I-Cache Refill | Port B: D-Bus MMIO)"]
+            BRAM["16KB Dual-Port BRAM (4x RAMB36E1)<br/>(Port A: I-Cache Refill | Port B: D-Bus MMIO)"]
         end
 
         subgraph PERIPHERALS ["Memory-Mapped I/O Peripherals"]
@@ -127,17 +127,17 @@ flowchart TD
     SYNC_RST -->|soc_rst_n| CPU_CORE
 
     %% Core to Interconnect
-    ICACHE <-->|Master 0: AXI AR/R| XBAR
-    AXI_D_M <-->|Master 1: AXI AW/W/B/AR/R| XBAR
+    ICACHE ---|Master 0: AXI AR/R| XBAR
+    AXI_D_M ---|Master 1: AXI AW/W/B/AR/R| XBAR
 
     %% Interconnect to Slaves
-    XBAR <-->|Slave 0: 0x0000_0000 (16KB)| BRAM
-    XBAR <-->|Slave 1: 0x1000_0000| UART
-    XBAR <-->|Slave 2: 0x1000_1000| GPIO
-    XBAR <-->|Slave 3: 0x1000_2000| TIMER
+    XBAR ---|Slave 0: 0x0000_0000 16KB| BRAM
+    XBAR ---|Slave 1: 0x1000_0000| UART
+    XBAR ---|Slave 2: 0x1000_1000| GPIO
+    XBAR ---|Slave 3: 0x1000_2000| TIMER
 
     %% External Connections
-    UART <-->|TX / RX| UART_PINS
+    UART ---|TX / RX| UART_PINS
     SW_PINS --> GPIO
     GPIO --> LED_PINS
 ```
