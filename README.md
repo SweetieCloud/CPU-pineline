@@ -1,4 +1,4 @@
-# 🚀 RV32IM Pipelined System-on-Chip (SoC) & Industrial FPGA Implementation
+# 🚀 RV32IM Pipelined System-on-Chip (SoC) & FPGA Implementation
 
 ![ISA](https://img.shields.io/badge/ISA-RISC--V%20RV32IM%20(Unprivileged%2020191213)-blue.svg)
 ![Privilege](https://img.shields.io/badge/Privilege-Machine%20Mode%20(v1.11)-blueviolet.svg)
